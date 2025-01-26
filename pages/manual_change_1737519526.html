@@ -1,0 +1,1546 @@
+<html lang="en"><head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="title" content="G4K">
+<meta name="author" content="외교부">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- 2024.01.25 김종현  -->
+ <!-- 2024.01.25 김종현  -->
+ <!--  복호화[2020-04-27 추가]  -->
+
+<!--  css Start -->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/css/v2/portal_common.css?ver=20240119">	<!-- 2023-11-28  v2적용 -->
+<link rel="stylesheet" type="text/css" href="/css/v2/portal_layout.css?ver=20240808">	<!-- 2023-12-27  v2적용 -->
+<link rel="stylesheet" type="text/css" href="/css/v2/responsive.css?ver=20240710">	<!-- 2023-11-28  v2적용 -->
+<link rel="stylesheet" type="text/css" href="/css/v2/tui-date-picker.css?ver=20240119">	<!-- 2024-01-09 toast ui 달력 적용 -->
+<link rel="stylesheet" type="text/css" href="/css/v2/swiper.css?ver=20240119">	<!-- 2024-01-29 swiper적용-->
+<link rel="stylesheet" type="text/css" href="/css/netfunnel/netfunnel.css"> <!-- Netfunnel - 2024.04.16 김종현 -->
+
+<!--  js Start -->
+<script src="/js/new/jquery-1.12.4.min.js"></script>
+<script src="/js/new/jquery-ui.min.js"></script>
+<script src="/js/validation/jquery.validate.js"></script>
+<script src="/js/common/jquery-migrate-1.4.1.min.js"></script>
+<script src="/js/common/jquery.cookie.js"></script>
+
+<script src="/js/new/v2/common.js?ver=20240228"></script>	<!-- 2024-02-28  v2적용 -->
+<script src="/js/common/v2/ui.js?ver=20240308-01b"></script>	<!-- 2023-11-28  v2적용, 2024-03-08 -->
+<script src="/js/common/v2/tui-date-picker.js?ver=20240109"></script>	<!-- 2024-01-09 toast ui 달력 적용 -->
+<script src="/js/common/v2/project.js?ver=20240417"></script>	<!-- 2024-01-26  v2적용, 오픈 적용 - 2024.04.04 -->
+<script src="/js/common/v2/swiper.js"></script>	<!-- 2024-01-29  swiper -->
+<script src="/js/common/v2/common.js?ver=20240509"></script>	<!-- 2024-02-19 v2적용 -->
+
+<!-- jquery chosen -->
+<script src="/js/jquery-chosen/chosen.jquery.js"></script>
+<link type="text/css" href="/js/jquery-chosen/chosen.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+<script src="/js/common/html5shiv.min.js"></script>
+<![endif]-->
+
+<script>
+	var gfv_contextpath = "";
+	var gfv_mode = "real";
+	// Netfunnel - 2024.04.16 김종현
+	// -- 시작
+	var netfunnel = document.createElement('script');
+	var netfunnel_skin = document.createElement('script');
+	var mbuster_api_script = document.createElement('script');
+	var mbuster_meta_script = document.createElement('script');
+	if(gfv_mode == 'real'){
+		//넷퍼넬
+		netfunnel.src = '/js/netfunnel/netfunnel.js';
+		netfunnel_skin.src = '/js/netfunnel/test_skin.js';
+		document.head.appendChild(netfunnel);
+		document.head.appendChild(netfunnel_skin);
+
+	}
+	// -- 끝
+
+	var gfn_passPhrase 		= "ZzRrMDJDcnlwdG9qc0tleQ=="; // 복호화[2020-04-27 추가]
+	// validation 결과 alert 형태로 표현
+	$.validator.setDefaults({
+		onkeyup: false,
+		onclick: false,
+		onfocusout: false,
+		showErrors: function(errorMap, errorList) {
+			if(this.numberOfInvalids()) {
+				alert(errorList[0].message);
+			}
+		}
+	});
+
+	//모바일모드 구분
+	var ua = window.navigator.userAgent;
+	ua = ua.toLowerCase();
+	var platform = {};
+	var matched = {};
+	var mobileYn = "";
+	var platform_match = /(ipad)/.exec(ua) || /(ipod)/.exec(ua)
+		|| /(windows phone)/.exec(ua) || /(iphone)/.exec(ua)
+		|| /(kindle)/.exec(ua) || /(silk)/.exec(ua) || /(android)/.exec(ua)
+		|| /(win)/.exec(ua) || /(mac)/.exec(ua) || /(linux)/.exec(ua)
+		|| /(cros)/.exec(ua) || /(playbook)/.exec(ua)
+		|| /(bb)/.exec(ua) || /(blackberry)/.exec(ua)
+		|| [];
+
+	matched.platform = platform_match[0] || "";
+
+	if(matched.platform) {
+		platform[matched.platform] = true;
+	}
+
+	if(platform.android || platform.bb || platform.blackberry
+			|| platform.ipad || platform.iphone
+			|| platform.ipod || platform.kindle
+			|| platform.playbook || platform.silk
+			|| platform["windows phone"]) {
+		mobileYn = "Y";
+	}
+
+	if(platform.cros || platform.mac || platform.linux || platform.win) {
+		mobileYn = "N";
+	}
+
+</script><script src="/js/netfunnel/netfunnel.js"></script><script src="/js/netfunnel/test_skin.js"></script>
+
+<!-- common javascript -->
+<script src="/js/common/projectMsg.js?ver=20241112"></script>
+<script src="/js/common/stringUtil.js"></script>
+<script src="/js/common/fileUtil.js"></script>
+
+<!-- AES Encrypt/Decrypt  복호화[2020-04-27 추가]  -->
+<script src="/js/crypto-js/crypto-js.min.js"></script>
+<script src="/js/crypto-js/crypto.js"></script>
+
+<!-- Markany WebDRM -->
+<!--
+<script src="/solution/markany/webdrm/jQuery.XDomainRequest.js"></script>
+<script src="/solution/markany/webdrm/MaWebDRM_Common.js"></script>
+<script src="/solution/markany/webdrm/MaWebDRM.js"></script>
+-->
+
+<!-- smart editor -->
+<script src="/solution/smarteditor/js/service/HuskyEZCreator.js"></script>
+
+<title>Select the Date and Time | Reservation to Visit a Diplomatic Mission | 재외동포 365민원포털</title>
+<script src="/js/biz/ciph/v2/CIPH0801V2S2eng.js?ver=20240304-01g"></script><link rel="preconnect" href="https://fonts.gstatic.com"><link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR">
+<script>
+
+
+
+	
+urlPrefix = "";
+		
+	
+	
+
+
+</script>
+<script>
+var visitEmblCd = "NP";
+var visitNatnCd = "148";
+var visitRegnCd = "BB";
+var visitEmblNowDayYn = "N";
+
+var emblTime = "20250122";
+var emblNm = "주네팔대한민국 대사관";
+var firstGrpCd = "NP0023";
+
+var opMakeCalendarYn = "Y";
+
+var dp1 = ""; // 달력
+$(document).ready(function() {
+
+	if(typeof NetFunnel_Action === 'function'){
+		NetFunnel_Complete();
+	}
+
+	/********************************************
+	@함수명
+	@설명   	민원업무 대분류 변경 이벤트
+	@인자
+	@작성일  	2024. 01. 08.
+	@작성자  	김종현
+	@변경일		변경자        변경내역
+	2024.01.08	김종현        최초작성
+	 *********************************************/
+	$("#bussGrpCd").on("change", function() {
+		var $this = $(this);
+
+		$("div.checkboxList ul li").each( function(index, item) {
+			var $item = $(item);
+			if ($item.attr("v_grpCd") == $this.val()) {
+				$item.show();
+			} else {
+				$item.hide();
+			}
+		});
+	});
+
+	/********************************************
+	@함수명
+	@설명   	민원업무 소분류 클릭 이벤트
+	@인자
+	@작성일  	2024. 01. 08.
+	@작성자  	김종현
+	@변경일		변경자        변경내역
+	2024.01.08	김종현        최초작성
+	 *********************************************/
+	$("[id ^= bussCd_]").on("click", function() {
+		var $this = $(this);
+
+		if ($this.is(":checked")) {
+			if (bussCnt == 5) {
+				alert("민원업무는 최대 5개까지 선택할 수 있습니다");
+				$this.prop("checked", false);
+				return;
+			}
+
+			//$this.prop("disabled", true);
+			bussCnt++;
+
+			grpCdList = "";
+			grpNmList = "";
+			bussCdList = "";
+			bussNmList = "";
+			$("[id ^= bussCd_]").each(function(index,item) {
+				var $item = $(item);
+				if ($item.is(":checked")) {
+					grpCdList += ((grpCdList != "") ? ",": "") + $item.attr("v_grpCd");
+					grpNmList += ((grpNmList != "") ? ">_>": "") + $item.attr("v_grpNm");
+					bussCdList += ((bussCdList != "") ? "," : "") + $item.val();
+					bussNmList += ((bussNmList != "") ? ">_>" : "") + $item.attr("v_bussNm");
+				}
+			});
+
+			if (opMakeCalendarYn === "Y") {
+				fn_makeCalendar();
+			}
+
+			// 선택한 업무에 추가
+			var $selBussListUl = $("#selBussListUl");
+			// 구비서류가 없는 경우 아이콘 비우기 - 2024.03.21 김종현
+			// -- 시작
+			var $pospprTextarea = $("#posppr_" + $this.val());
+			var selBussClass = "icoArrowRB";
+			if ($pospprTextarea.html() === null || $pospprTextarea.html() === undefined || $pospprTextarea.html() == "") {
+				selBussClass = "";
+			}
+			// -- 끝
+
+			if (bussCnt == 1) {
+				$selBussListUl.html("");
+			}
+			var strSelBussList = $selBussListUl.html();
+
+			if(bussCnt ==1) {
+				strSelBussList += '<li class="flexM">'
+					+ '<span>Please check the required documents(<img src="/images/portal/v2/ico-go-b.svg" style="padding-bottom:3px;">) for each service.</span>'
+					+ '</li>';
+			}
+
+			strSelBussList += '<li id="selBuss_'
+					+ $this.val()
+					+ '" class="flexM">'
+					+ '<a href="javascript:void(0)" class="btnGo"><span v_busscd="'
+					+ $this.val()
+					+ '" class="' +selBussClass+ '">' // 2024.03.21 김종현
+					+ $this.attr("v_bussnm")
+					+ '</span></a>'
+					+ '<button type="button" v_busscd="'
+					+ $this.val()
+					+ '" class="btnDel fNone">삭제</button>'
+					+ '</li>';
+			$selBussListUl.html(strSelBussList);
+
+			/********************************************
+			@설명   	추가한 업무 개별 삭제 이벤트
+			@인자
+			@작성일  	2024. 01. 08.
+			@작성자  	김종현
+			@변경일		변경자        변경내역
+			2024.01.08	김종현        최초작성
+			 *********************************************/
+			$("li[id^=selBuss_] button").on("click", function(event) {
+				var $this = $(this);
+				var $chkBuss = $("[id=bussCd_" + $this.attr("v_busscd") + "]");
+				$chkBuss.trigger("click");
+				event.preventDefault();
+			});
+
+			/********************************************
+			@설명   	추가한 업무 개별 구비서류 팝업 이벤트
+			@인자
+			@작성일  	2024. 01. 08.
+			@작성자  	김종현
+			@변경일		변경자        변경내역
+			2024.01.08	김종현        최초작성
+			 *********************************************/
+			$("li[id^=selBuss_] a span").on("click", function(event) {
+				var $this = $(this);
+				var $emblPosppr = $("[id=bussCd_" + $this.attr("v_busscd") + "]").siblings("textarea").first();
+
+				if ($emblPosppr.val() == null || $emblPosppr.val() == "") {
+					// alert("해당 민원업무에 필요한 서류는 없습니다."); // 구비서류 없음 메시지 중단 - 2024.03.21 김종현
+					//$("#popup2").hide();  // 2024.04.24 김종현 삭제
+				} else {
+					var innerHtml = "";
+					innerHtml += '<pre style="font-family: Noto Sans KR, sans-serif;color: #212121;">';
+					innerHtml += $emblPosppr.val().replace(/\n/g, '<br/>');
+					;
+					innerHtml += '</pre>';
+					$("#requiredDocumentInnerHtml").html(innerHtml);
+
+					// 2024.04.24 김종현
+					// -- 시작
+					fn_layer("popup2", this, 750);
+					//$("#popup2").show();
+					// -- 끝
+				}
+			});
+		} else {
+			$this.prop("disabled", false);
+			bussCnt--;
+
+			grpCdList = "";
+			grpNmList = "";
+			bussCdList = "";
+			bussNmList = "";
+			$("[id ^= bussCd_]").each(function(index, item) {
+				var $item = $(item);
+				if ($item.is(":checked")) {
+					grpCdList += ((grpCdList != "") ? ",": "") + $item.attr("v_grpCd");
+					grpNmList += ((grpNmList != "") ? ">_>": "") + $item.attr("v_grpNm");
+					bussCdList += ((bussCdList != "") ? ",": "") + $item.val();
+					bussNmList += ((bussNmList != "") ? ">_>": "") + $item.attr("v_bussNm");
+				}
+			});
+
+			// 선택한 업무 삭제
+			var $selBussListUl = $("#selBussListUl");
+			if (bussCnt == 0) {
+				$("#timeInfoP").html("Select a time."); // 방문일시를 선택하세요 - 2024.03.04 김종현
+				var strSelBussList = '<li class="flexM">' + 'Select a service.' + '</li>'; // 민원업무를 선택하세요 - 2024.03.04 김종현
+				$selBussListUl.html(strSelBussList);
+
+				$("#timeDiv").hide();
+				$("#timeDiv ul").html("<li>&nbsp;</li>");
+
+				new datepicker('dp1', 'date', false, fn_setDate(emblTime));
+			} else {
+				var $delBussLi = $("#selBussListUl li[id=selBuss_" + $this.val() + "]");
+				$delBussLi.remove();
+
+				// 2024.03.28 김종현 추가
+				if (opMakeCalendarYn === "Y") {
+					fn_makeCalendar();
+				}
+			}
+		}
+	});
+
+	/********************************************
+	@함수명
+	@설명   	전체삭제 버튼 클릭 이벤트
+	@인자
+	@작성일  	2024. 01. 08.
+	@작성자  	김종현
+	@변경일		변경자        변경내역
+	2024.01.08	김종현        최초작성
+	 *********************************************/
+	$("#delAllBtn").on("click", function(event) {
+		$("[id ^= bussCd_]").each(function(index, item) {
+			var $item = $(item);
+			if ($item.is(":checked")) {
+				$item.trigger("click");
+			}
+		});
+
+		event.preventDefault();
+	});
+
+	/********************************************
+	@함수명
+	@설명   	취소버튼 클릭 이벤트
+	@인자
+	@작성일  	2024. 01. 08.
+	@작성자  	김종현
+	@변경일		변경자        변경내역
+	2024.01.08	김종현        최초작성
+	 *********************************************/
+	$("#cnclBtn").on("click", function() {
+		document.location = "/";
+
+		event.preventDefault();
+	});
+
+	/********************************************
+	@함수명
+	@설명   	이전버튼 클릭 이벤트
+	@인자
+	@작성일  	2024. 01. 08.
+	@작성자  	김종현
+	@변경일		변경자        변경내역
+	2024.01.08	김종현        최초작성
+	 *********************************************/
+	$("#befBtn").on("click", function(event) {
+		//history.back();
+		$("#bussForm").attr("action",gfv_contextpath + urlPrefix + "/ciph/0800/selectCIPH0801S1eng.do");
+		$("#bussForm").submit();
+
+		event.preventDefault();
+	});
+
+	/********************************************
+	@함수명
+	@설명   	다음버튼 클릭 이벤트
+	@인자
+	@작성일  	2024. 01. 08.
+	@작성자  	김종현
+	@변경일		변경자        변경내역
+	2024.01.08	김종현        최초작성
+	 *********************************************/
+	$("#aftBtn").on("click", function(event) {
+		var strVisitDe = $("#workDe").val();
+		var strTimeCd = $("#resveTimeCd").val();
+		var strTimeNm = $("#resveTimeNm").val();
+		var strVisitDtNm = $("#timeInfoP").html();
+		var visitResveId = $("#selVisitResveId").val();
+
+		if (grpCdList == null || grpCdList == "") {
+			alert("Select services."); // 민원업무를 선택하세요 - 2024.03.04 김종현
+			return;
+		}
+
+		if (bussCdList == null || bussCdList == "") {
+			alert("Select services."); // 민원업무를 선택하세요 - 2024.03.04 김종현
+			return;
+		}
+
+		if (strVisitDe == null || strVisitDe == "") {
+			alert("Select a time."); // 방문시간을 선택하세요 - 2024.03.04 김종현
+			return;
+		}
+
+		if (strTimeCd == null || strTimeCd == "") {
+			alert("Select a time"); // 방문시간을 선택하세요 - 2024.03.04 김종현
+			return;
+		}
+
+		$("#visitResveBussGrpCd").val(grpCdList);
+		$("#visitResveBussGrpNm").val(grpNmList);
+		$("#visitResveBussCd").val(bussCdList);
+		$("#visitResveBussNm").val(bussNmList);
+		$("#visitDe").val(strVisitDe);
+		$("#timeCd").val(strTimeCd);
+		$("#timeNm").val(strTimeNm);
+		$("#visitDtNm").val(strVisitDtNm);
+		$("#visitResveId").val(visitResveId);
+
+		$("#bussForm").attr("action", gfv_contextpath + urlPrefix + "/ciph/0800/selectCIPH0801S3eng.do");
+		//$("#bussForm").submit();
+
+		fn_NetfunnelSubmit("CIPH0801S3","netfunnel_chph0803","bussForm");
+
+		event.preventDefault();
+	});
+
+	/* 화면 초기화 */
+	// 신청자정보 화면에서 돌아온 경우(이전 이용) - 2024.03.21 김종현
+	selBussListExstYn = "N";
+	if (selBussListExstYn == "Y") {
+		$("#delAllBtn").trigger("click"); // 선택된 모든 민원 업무 삭제
+
+		var bussCdList = "";
+		var bussCdArray = bussCdList.split(",");
+
+		var bussCdGrpList = "";
+		var bussCdGrpArray = bussCdGrpList.split(",");
+		$("#bussGrpCd").val(bussCdGrpArray[0]).trigger('change');
+
+		opMakeCalendarYn = "N";
+		$("input[id ^= bussCd_]").each(function(idx, item) {
+			var $item = $(item);
+			var bussCd = $item.val();
+			for (var idx = 0; idx < bussCdArray.length; idx++) {
+				var selBussCd = bussCdArray[idx];
+				if (bussCd === selBussCd) {
+					$item.trigger("click");
+				}
+			}
+		});
+		opMakeCalendarYn = "Y";
+
+		// 해당 월 달력 생성 - 2024.03.20 김종현
+		var visitDe = "";
+		var timeCd = "";
+
+		dp1 = new datepicker('dp1', 'date', false, fn_setDate(visitDe));
+		fn_visitReserveCalendarYes(visitDe);
+
+		var day = visitDe.substring(6,8);
+		if (day.startsWith("0")) {
+			day = day.substring(1);
+		}
+		$(".box01 .datepicker #calendar td[id=day"+day+"]").addClass("focus");
+		$('#workDe').val(visitDe);
+
+		// 방문시간 구성 및 선택 - 2024.03.20 김종현
+		fn_clickCalendarResveVisit(visitDe);
+		var $timeInput = $("#timeDiv ul li span.checkbox input[id=timeCd_"+ timeCd+"]");
+		$timeInput.prop("checked", true);
+		$timeInput.trigger("click");
+
+		selBussListExstYn = "N";
+	}
+	else {
+		// 빈 달력
+		dp1 = new datepicker('dp1', 'date', false);
+	}
+
+});
+</script>
+<script src="https://tc.g4k.go.kr:443/ts.wseq?opcode=5004&amp;key=B19FD26C529C6579847B2D44D92F2F1C26BB680F4F2247C4F270B6EC96E92D7354DBCD2D64A519899072E2262317BD4FD9040F6839CA2B45267EC642D94730C5205EA9C60AF8756E67A3BB8F42A803F3A38BD9C3CBEDA4B37B965786DDA76D685AA1A6AC206CFE047EFB77B62856B89F4E502C302C332C312C322C30&amp;nfid=0&amp;prefix=NetFunnel.gRtype=5004;&amp;js=yes&amp;1737519525098"></script></head>
+<body>
+<!-- 본문바로가기 -->
+<div id="skip">
+	<a href="#gnb">Go to main menu</a>
+	<a href="#cts">Skip to content</a>
+</div>
+<div id="wrap" class="en">
+	<!-- header -->
+	
+
+
+
+
+
+
+
+
+
+
+<script>
+	
+		
+var urlPrefix = "";
+			
+		
+		
+	
+
+	$(function() {
+
+		$('#hCffdnNm').keydown(function(key){
+			if(key.keyCode == 13){
+				fn_hSearch();
+			}
+		});
+
+		// 2024.05.07 김세연 로그인 후 이름 표시 추가
+		fn_userNameCheck();
+
+	});
+
+
+	//조회
+	function fn_hSearch() {
+		var param = {};
+		param.sch_cffdnNm =  $("#allSc").val();
+		param.sch_txt =  $("#allSc").val();
+		common.gfn_sendForm("/en/ciph/0900/selectUnitySearchList.do",param);
+	}
+
+
+	// 2024.05.07 김세연 로그인 후 이름 표시 추가
+	function fn_userNameCheck(){
+		var userName = "봄잔니샤";
+		if(userName === ''){
+			$('#userNameP').hide();
+		}else{
+			$('#userNameP').show();
+			$('#userNameSpan').text(userName);
+		}
+	}
+</script>
+
+	<div id="header">
+		<!-- inner -->
+		<div class="inner">
+			<h1><a href="/en/main.do"><img src="/images/en/v2/logo-e.svg" alt="365 overseas korean portal"></a></h1>
+			<a href="" class="btnMenu">Menu</a>
+		</div>
+		<!--// inner -->
+		<!-- allMenu -->
+		<div class="allMenu">
+			<!-- util -->
+			<div class="util">
+				<!-- 2024.05.07 로그인 후 이름 표시 추가 -->
+				<p class="userName" id="userNameP">
+					<span id="userNameSpan">봄잔니샤</span>
+				</p>
+
+				<!-- <a href="" class="btnRG">Log In </a>
+				<dl>
+					<dt><a href="" class="btnRG"><span>My Page</span></a></dt>
+					<dd>
+						<a href="/cipx/0100/selectCIPX0100List.do">My Reservation</a>
+						<a href="/cipl/0100/logout.do">Log Out</a>
+					</dd>
+				</dl>
+				-->
+				<!-- <a href="" class="btnRG">로그인</a> -->
+				
+					
+						
+							<dl>
+								<dt>
+									<a href="" class="btnRG"><span>My Page</span></a>
+								</dt>
+								<dd>
+									<a href="/cipi/0100/selectCIPI0100D.do">Member information</a>
+									<a href="/ciph/0800/selectResveVisitList2Eng.do">My Reservation</a>
+									<a href="/cipl/0100/logout.do">Log Out</a>
+								</dd>
+							</dl>
+						
+						
+					
+					
+				
+
+
+				<dl>
+					<dt><a href="/biz/main/main.do" class="btnLang">language</a></dt>
+					<dd>
+						<a href="/biz/main/main.do">KOREAN</a>
+						
+					</dd>
+				</dl>
+				<a href="" class="btnMenu">menu</a>
+			</div>
+			<!--// util -->
+			<!-- searchWrap -->
+			
+			<!--// searchWrap -->
+			<!-- inBox -->
+			<div class="inBox" style="display: none;">
+				<!-- menuBox -->
+				<div class="menuBox v2">
+					<h2>Menu</h2>
+					<ul>
+						<li class="more">
+							<a href="">Services</a>
+							<ul>
+
+								<li><a href="/ciph/0800/selectCIPH0801Deng.do">Reservation to Diplomatic Mission</a></li>
+								<li><a href="/ciph/1000/selectCIPHFindEmbl1000Eng.do">Find the Diplomatic Mission</a></li>
+								<li><a href="/en/draa/0100/newDRAA100LA.do">Apostille Documents Authentication</a></li>
+							</ul>
+						</li>
+						<li class="more">
+							<a href="">Documents Authentication</a>
+							<ul>
+								<li><a href="/en/draa/0100/newDRAA100LI.do?draaType=01">Certificate of Overseas Korean National Registration</a></li>
+								<li><a href="/en/draa/0100/newDRAA100LI.do?draaType=02">Certification of Emigration Notification</a></li>
+								<li><a href="/en/draa/0100/newDRAA100LI.do?draaType=05">Notarial Documents</a></li>
+							</ul>
+						</li>
+						<li class="more">
+							<a href="">My Page</a>
+							<ul>
+								<li><a href="/ciph/0800/selectResveVisitList2Eng.do">My Reservation</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!--// menuBox -->
+			</div>
+			<!--// inBox -->
+		</div>
+		<!--// allMenu -->
+	</div>
+
+	<!--// header -->
+
+	<!-- container -->
+	<section id="navigator">
+		<header class="hide">
+			<h2>Current Position</h2>
+		</header>
+		<div class="locate">
+			<div class="layout">
+				<ul class="location">
+					<li class="home"><span>HOME</span></li>
+					<li class="depth1"><span>Reservation to Visit a Diplomatic Mission</span></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<section class="ctn load">
+		<div class="ctn_inner">
+			<div id="cts" class="cts">
+				<form id="bussForm" method="post">
+					<input type="hidden" name="visitEmblCd" value="NP">
+					<input type="hidden" name="visitNatnCd" value="148">
+					<input type="hidden" name="visitRegnCd" value="BB">
+					<input type="hidden" name="nowDayYn" value="N">
+					<input type="hidden" name="totCnt" value="1">
+					<input type="hidden" name="onedayCnt" value="1">
+					<input type="hidden" name="idnyCnfrmNoEssntlYn" value="Y"> 
+					<input type="hidden" name="visitEmblEngNm" value="Embassy of the Republic of Korea in Nepal">
+					<input type="hidden" id="visitResveId" name="visitResveId">
+					<input type="hidden" id="visitResveBussGrpCd" name="visitResveBussGrpCd">
+					<input type="hidden" id="visitResveBussGrpNm" name="visitResveBussGrpNm">
+					<input type="hidden" id="visitResveBussCd" name="visitResveBussCd">
+					<input type="hidden" id="visitResveBussNm" name="visitResveBussNm">
+					<input type="hidden" id="visitDe" name="visitDe">
+					<input type="hidden" id="timeCd" name="timeCd">
+					<input type="hidden" id="timeNm" name="timeNm">
+					<input type="hidden" id="visitDtNm" name="visitDtNm">
+				</form>
+				<input type="hidden" id="emblTime" name="emblTime" value="20250122">
+				<input type="hidden" id="workDe" name="workDe">
+				<input type="hidden" id="resveTimeCd" name="resveTimeCd">
+				<input type="hidden" id="resveTimeNm" name="resveTimeNm">
+				<input type="hidden" id="selVisitResveId" name="visitResveId">
+
+				<h1 class="page_tit2"><span>Reservation to Visit a Diplomatic Mission</span></h1>
+
+				<!-- step -->
+				<div class="step">
+					<ol>
+						<li class="on"><span>1</span><p>Notice</p></li>
+						<li class="v1 on"><em class="hide">Current page</em><span>2</span><p>Select a Diplomatic Mission</p></li>
+						<li class="on curr"><span>3</span><p>Select the Date and Time</p></li>
+						<li><span>4</span><p>Reservation Details</p></li>
+						<li class="v2"><span>5</span><p>Completed</p></li>
+					</ol>
+				</div>
+				<!--// step -->
+				<h4>Select the date and time</h4>
+				<!-- blList -->
+				<ul class="blList">
+					<li>※ The available visit dates and times may very depending on the services. Please choose the visit date and time after selecting the service</li>
+					<li>※ Foreach visit reservation, you can select up to a 5 services.</li>
+				</ul>
+				<!--// blList -->
+				<!-- boxLine -->
+				<div class="boxLine box01">
+					<!-- compSelect -->
+					<div class="compSelect">
+						<div class="flexM">
+							
+							<select title="Service Group" id="bussGrpCd" name="bussGrpCd" class="sel01">
+								<option value="" selected="">select</option>
+								
+								
+									
+									
+										<option value="NP0023">사증(VISA)</option>
+										
+									
+								
+									
+									
+										<option value="NP0024">공증· 영사확인(Documents Authentication)</option>
+										
+									
+								
+									
+									
+										<option value="NP0025">유학사증(Study VISA)</option>
+										
+									
+								
+									
+									
+										<option value="NP0001">재외국민</option>
+										
+									
+								
+									
+									
+								
+									
+									
+										<option value="NP0010">여권</option>
+										
+									
+								
+									
+									
+								
+									
+									
+								
+									
+									
+								
+									
+									
+										<option value="NP0014">가족관계</option>
+										
+									
+								
+									
+									
+								
+									
+									
+										<option value="NP0017">증명서 발급</option>
+										
+									
+								
+									
+									
+								
+									
+									
+										<option value="NP0021">공인인증서</option>
+										
+									
+								
+									
+									
+										<option value="NP0004">1</option>
+										
+									
+								
+									
+									
+								
+									
+									
+								
+									
+									
+								
+									
+									
+								
+							</select>
+						</div>
+						<!-- checkboxList -->
+						<div class="checkboxList">
+							<ul>
+								
+								
+									<li v_grpcd="NP0023" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0023" name="bussCd" value="NP0023" v_grpcd="NP0023" v_grpnm="사증(VISA)" v_bussnm="사증(VISA)">
+											<label for="bussCd_NP0023">사증(VISA)</label>
+											<textarea id="posppr_NP0023" title="Required docuements for 사증(VISA)" style="display: none;">주네팔대한민국대사관 홈페이지-영사업무-사증 참조
+
+ ※ The last visa documents(Fall semester student visa) submission date will be August 16(Fri), 2024.
+
+ ※ Even though you have an on-line reservation through the 365 Overseas Korean Portal, your reservation may be cancelled if the reservation is made through fradulant activities. Please check your reservation is valid, before you visit Embassy.
+
+
+Please find this link below for your documents' check list.
+
+http;//overseas.mofa.go.kr/np-en/wpge/m_1714/contents.do
+</textarea> 
+										</span>
+									</li>
+								
+									<li v_grpcd="NP0024" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0024" name="bussCd" value="NP0024" v_grpcd="NP0024" v_grpnm="공증· 영사확인(Documents Authentication)" v_bussnm="공증· 영사확인(Documents Authentication)">
+											<label for="bussCd_NP0024">공증· 영사확인(Documents Authentication)</label>
+											<textarea id="posppr_NP0024" title="Required docuements for 공증· 영사확인(Documents Authentication)" style="display: none;">공증(verification) 및 영사확인(Consular Confirmation)
+
+※ Even though you have an on-line reservation through the 365 Overseas Korean Portal, your reservation may be cancelled if the reservation is made through fradulant activities. Please check your reservation is valid, before you visit Embassy.
+
+APPOINTMENT SYSTEM FOR CONSULAR SERVICES
+
+Documents Required
+
+ 1. Original Documents
+ 2. Original documents verified by Ministry of Foreign Affairs Nepal.
+ 3. Application Letter
+ 4. Passport Copy
+ 5. Authorization Letter
+ 6. Alien Registration Card Copy
+ 7. Identity verification card of the Authorized person
+
+Embassy of the Republic of Korea in Nepal</textarea> 
+										</span>
+									</li>
+								
+									<li v_grpcd="NP0025" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0025" name="bussCd" value="NP0025" v_grpcd="NP0025" v_grpnm="유학사증(Study VISA)" v_bussnm="유학사증(Study VISA)">
+											<label for="bussCd_NP0025">유학사증(Study VISA)</label>
+											<textarea id="posppr_NP0025" title="Required docuements for 유학사증(Study VISA)" style="display: none;">*Documents to be provided by the university and sponsors in Korea (for further information, please refer to the Korean version of the Embassy’s website)
+-Standard Admission Certificate (the original as well as a photocopy)
+-Scholarship certificate (the original as well as a photocopy)
+-Financial affidavit from a professor (if the professor is supporting the applicant’s tuition fees, living expenses, etc.)
+-Professor’s job certificate (if the professor is supporting the applicant’s tuition fees, living expenses, etc.)
+-A photocopy of the university’s business registration certificate
+
+*Documents to be provided by applicants
+-One recent passport-size photo of the applicant
+-Original passport and a photocopy thereof
+-Marriage certificate
+-Family relationship certificate
+-Medical Report on Tuberculosis from only 4 designated hospitals by the Embassy; 1. Patan Hospital, Patan, 2. Civil Service Hospital, Newbaneshor, 3. Korea Nepal Friendship Nepal Friendship Hospital (Korea Thimi Hospital),</textarea> 
+										</span>
+									</li>
+								
+									<li v_grpcd="NP0001" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0002" name="bussCd" value="NP0002" v_grpcd="NP0001" v_grpnm="재외국민" v_bussnm="재외국민 등록 및 변경 이동">
+											<label for="bussCd_NP0002">재외국민 등록 및 변경 이동</label>
+											<textarea id="posppr_NP0002" title="Required docuements for 재외국민 등록 및 변경 이동" style="display: none;">☞ 주네팔대사관 홈페이지에서 대사관 방문하지 않고 재외국민등록신청 가능함.
+
+1. 재외국민 등록
+
+  ㅇ 여권 
+  ㅇ 네팔 입국 날짜 및 유효한 비자가 부착된 여권면 사본 1부
+  ㅇ 신청서(대사관 비치)
+  ㅇ 기본증명서 1부
+      - 인터넷 사이트 전자가족관계 등록 시스템(efamily.scourt.go.kr) 접속 후 무료로 발급 가능
+      - 공인인증서 필요함
+  ㅇ 가족관계증명서(미성년 자녀, 혹은 가족 대리신청의 경우) 1부, 대리인의 여권 사본 1부
+      - 인터넷 사이트 전자가족관계 등록 시스템(efamily.scourt.go.kr) 접속 후 무료로 발급 가능
+      - 공인인증서 필요함
+
+
+2.  재외국민등록 변경, 이동 신고
+
+  ㅇ 여권 
+  ㅇ 네팔 입국 날짜 및 유효한 비자가 부착된 여권면 사본 1부
+  ㅇ 신청서(대사관 비치)
+  ㅇ 기본증명서 1부(등록 기준지가 변경되었을 경우에 한하여 필요)
+      - 인터넷 사이트 전자가족관계 등록 시스템(efamily.scourt.go.kr) 접속 후 무료로 발급 가능
+      - 공인인증서 필요함
+  ㅇ 가족관계증명서(미성년 자녀, 혹은 가족 대리신청의 경우) 1부, 대리인의 여권 사본 1부
+      - 인터넷 사이트 전자가족관계 등록 시스템(efamily.scourt.go.kr) 접속 후 무료로 발급 가능
+      - 공인인증서 필요함
+
+☞ 한국 입국 후 183일이 지나면 출입국 기록에 의해 재외국민 자격 자동 상실. </textarea> 
+										</span>
+									</li>
+								
+									<li v_grpcd="NP0001" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0003" name="bussCd" value="NP0003" v_grpcd="NP0001" v_grpnm="재외국민" v_bussnm="재외국민등록부 등본 교부">
+											<label for="bussCd_NP0003">재외국민등록부 등본 교부</label>
+											<textarea id="posppr_NP0003" title="Required docuements for 재외국민등록부 등본 교부" style="display: none;">1. 구비서류
+
+  ㅇ 여권 사본 1부
+  ㅇ신청서(대사관 비치)
+  ㅇ가족관계증명서( 미성년자로 부 또는 모가 대리신청일 경우)
+      - 인터넷에서 전자가족관계 등록 시스템(efamily.scourt.go.kr) 접속 후 무료로 발급 가능
+      - 공인인증서 필요함 
+ 
+
+2. 수수료 : 1부당 미화 $0.5(50센트)/ 소액권으로 준비 요망.
+
+  ㅇ인터넷 영사민원24(consul.mofa.go.kr)에서는 무료로 발급 받을수 있습니다.
+
+3. 소요기간 : 당일(시스템 전산장애 발생시 소요기간이 길어질수도 있습니다)</textarea> 
+										</span>
+									</li>
+								
+									<li v_grpcd="NP0010" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0011" name="bussCd" value="NP0011" v_grpcd="NP0010" v_grpnm="여권" v_bussnm="여권 재발급[만기, 분실, 훼손의 경우]">
+											<label for="bussCd_NP0011">여권 재발급[만기, 분실, 훼손의 경우]</label>
+											<textarea id="posppr_NP0011" title="Required docuements for 여권 재발급[만기, 분실, 훼손의 경우]" style="display: none;">1) 구비사항
+
+o 여권발급 신청서 1부 (대사관 비치)
+
+o 여권용 칼라사진 1매(사진 점검사항이 엄격하오니 각별히 주의하시기 바랍니다.)
+- 규격 : 가로 3.5㎝ x 세로 4.5㎝ (얼굴길이 가로 2.5㎝ x 세로 3.5㎝ 이내)
+- 바탕은 흰색(회색, 하늘색 불가)
+- 대사관에서 실시간 여권용 사진 촬영 가능.
+
+o 구여권
+
+o 여권분실 신고서(분실로 인한 재발급일 경우/ 대사관 비치)
+
+o 18세 미만 미성년 자녀일 경우 자녀의 기본증명서 및 가족관계증명서 각 1부
+
+   - 기본증명서, 가족관계증명서는 인터넷 전자가족관계 증록 시스템(efamily.scourt.go.kr)에서 무료로 발급 받을 수 있음.
+   _ 공인인증서 필요함.
+
+o 18세 미만 미성년 자녀일 경우 부모의 여권 사본
+
+o 18세 미만 미성년 자녀일 경우 법정대리인 동의서(대사관 비치)
+
+o 수수료 : 반드시 달러로 준비(소액권으로 준비 요망)
+
+   . 일반여권 10년 :$50(24면/ 18세이상), $53불(48면)/ 18세이상)
+   . 일반여권 5년 : $42(24면/ 8세이상-18세미만), $45불(48면/ 8세이상-18세미만)
+   . 일반여권 5년 : $30(24면/ 8세미만), $33불(48면/ 8세 미만)
+   . 일반여권 5년 : $25불(잔여유효기간부여 재발급 및 국외여행허가대상자)
+
+ o 처리기간 : 2-4주 (외교통상부 여권과에서 발급)
+
+* 2003.10월 이후 여권발급 비위임공관으로 변경됨에 따라 여권발급은 외교통상부 여권과에서 선신원조회 후 여권발급, 당지로 송부, 본인에게 교부
+
+2) 참고사항  
+
+o 구여권은 신여권 교부시 천공 및 무효조치후 본인에게 교부</textarea> 
+										</span>
+									</li>
+								
+									<li v_grpcd="NP0010" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0012" name="bussCd" value="NP0012" v_grpcd="NP0010" v_grpnm="여권" v_bussnm="긴급여권[단수여권]">
+											<label for="bussCd_NP0012">긴급여권[단수여권]</label>
+											<textarea id="posppr_NP0012" title="Required docuements for 긴급여권[단수여권]" style="display: none;">  ※ 도난, 강도를 포함한 여권 분실, 유효기간 부족 등은 긴급여권의 발급 사유가 되지 않음을 안내 드립니다.
+
+
+1) 구비사항
+
+o 여권발급 신청서 1부 (대사관 비치)
+
+o 칼라사진 2매(사진 점검사항이 엄격하오니 각별히 주의하시기 바랍니다.)
+- 규격 : 가로 3.5㎝ x 세로 4.5㎝ (얼굴길이 가로 2.5㎝ x 세로 3.5㎝ 이내)
+- 바탕은 흰색(회색, 하늘색 불가)
+
+o 구여권
+
+o 수수료 : 반드시 달러로 준비 $53/ 소액권으로 준비요망.
+
+
+2) 참고사항
+
+「여권법 시행령」 일부 개정령안이 3.3(화) 공포·시행됨에 따라 긴급여권 수수료가 15달러에서 53달러로 상향 조정됩니다.
+
+1. 개정 배경
+ㅇ 긴급여권(단수) 신청 시 긴급한 인도적 사유 외 여권 단순 분실 등 여권 관리 부주의 사례가 다수 발생해 왔습니다.
+
+ㅇ 이러한 무분별한 긴급여권 발급은 여권 분실률 증가를 초래하여 우리 여권의 대외신뢰도에 부정적 영향을 야기할 우려가 있습니다. (2019년 기준 인천공항 긴급여권 발급 건 중 개인 여권 관리 부실이 88%)
+
+ㅇ 아울러 주요 국가의 긴급여권 수수료 책정 사례와 국제민간항공기구(ICAO)의 권고 등에 따라 긴급여권 남발 가능성 방지를 위해 긴급여권 수수료가 상향 조정되었습니다.
+
+2. 주요 개정 내용
+가) 긴급여권(비전자 단수여권)의 수수료가 15달러에서 53달러로 상향 조정
+
+나) 다만, 여행목적이 여권발급 신청인의 친족이 사망하거나 위독한 경우 등 긴급한 인도적 사유가 인정되는 경우에 한하여 증빙서류(사망 증명서, 상해 진단서, 입원 증명서 등) 제출 시 수수료 20달러 적용
+  ※ 도난, 강도를 포함한 여권 분실, 유효기간 부족 등은 해당 사항 없음
+
+다) 긴급한 여행목적에 해당하나 증빙서류를 제출할 시간적 여유가 없는 경우에는 53달러 수납 후 발급일 기준 6개월 이내에 증빙서류 제출 시 차액 33달러 환급. 끝.
+</textarea> 
+										</span>
+									</li>
+								
+									<li v_grpcd="NP0010" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0013" name="bussCd" value="NP0013" v_grpcd="NP0010" v_grpnm="여권" v_bussnm="여행증명서">
+											<label for="bussCd_NP0013">여행증명서</label>
+											<textarea id="posppr_NP0013" title="Required docuements for 여행증명서" style="display: none;">1) 구비사항
+
+o 여권발급 신청서 1부 (대사관 비치)
+
+o 여권용 칼라사진 2매(사진 점검사항이 엄격하오니 각별히 주의하시기 바랍니다.)
+- 규격 : 가로 3.5㎝ x 세로 4.5㎝ (얼굴길이 가로 2.5㎝ x 세로 3.5㎝ 이내)
+- 바탕은 흰색(회색, 하늘색 불가)
+
+o 구여권(분실시 사본)
+
+o 여권분실 신고서(분실로 인한 재발급일 경우/ 대사관 비치)
+
+o 18세 미만 미성년 자녀일 경우 자녀의 기본증명서 및 가족관계증명서 각 1부
+ 
+   - 기본증명서, 가족관계증명서는 인터넷 사이트 전자가족관계 증록 시스템(efamily.scourt.go.kr)에서 무료로 발급 받을 수 있음.
+   _ 공인인증서 필요함.
+
+o 18세 미만 미성년 자녀일 경우 부모의 여권 사본
+
+o 18세 미만 미성년 자녀일 경우 법정대리인 동의서(대사관 비치)
+
+o 수수료 : 반드시 달러로 준비 $7/ 소액권으로 준비 요망.
+
+2) 참고사항
+
+o 발급 소요기간 : 2일(업무일 기준)</textarea> 
+										</span>
+									</li>
+								
+									<li v_grpcd="NP0010" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0020" name="bussCd" value="NP0020" v_grpcd="NP0010" v_grpnm="여권" v_bussnm="사증란 추가">
+											<label for="bussCd_NP0020">사증란 추가</label>
+											<textarea id="posppr_NP0020" title="Required docuements for 사증란 추가" style="display: none;">* 사증란 추가는 유효한 여권의 사증란 중 좌우면이 반드시 연속으로 공백인 경우에 한정하여 한차례만 할 수 있으며, 24면까지 추가할 수 있음.
+
+1. 구비사항
+
+   ㅇ 여권
+   ㅇ 여권 기재사항 변경신청서(대사관 비치)
+
+2. 수수료 : 미화 $5(소액권으로 지급 요망)
+
+3. 소요기간 : 2일</textarea> 
+										</span>
+									</li>
+								
+									<li v_grpcd="NP0014" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0015" name="bussCd" value="NP0015" v_grpcd="NP0014" v_grpnm="가족관계" v_bussnm="출생신고">
+											<label for="bussCd_NP0015">출생신고</label>
+											<textarea id="posppr_NP0015" title="Required docuements for 출생신고" style="display: none;">1. 신고절차
+
+ㅇ 출생한 날로부터 1개월이내에 출생신고를 재외공관 또는 본적지에 하여야 함
+ㅇ 출생자의 이름은 5자이내의 한글 또는 인명용 한자
+
+2. 구비서류
+
+ㅇ 출생신고서 1부(대사관 비치 또는 주네팔한국대사관 홈페이지-전자민원-양식다운로드)
+※ 출생신고서 작성시 네팔 병원명 &amp; 주소, 현재 거주지(네팔)의 한국식 기재명이 필요
+ㅇ 병원 발행 출생증명서 원본 1부, 한글번역본 1부 필
+ㅇ 부모의 여권 사본 각 1부
+ㅇ 부 또는 모의 혼인관계 증명서 원본 1부 및 가족관계증명서 원본 1부
+    - 가족관계증명서 및 혼인관계증명서는 인터넷 사이트 전자가족관계 등록 시스템(efamily.scourt.go.kr)에서 무료 발급 가능함.
+    - 공인인증서 필요함.
+※ 출생신고서 양식 및 작성요령은 주네팔한국대사관 홈페이지-영사업무-가족관계등록-11.출생신고 절차 참조
+
+3. 소요시일 및 수수료 안내
+
+ㅇ 소요시일은 약 1개월 (직접 한국으로 송부할 경우 약 1주일 소요, 신고자 비용 부담)
+ㅇ 수수료 없음
+
+※ 단, 가족관계등록증명서상 혼인신고일 이전에 아이가 출생하였을 경우는 출생신고가 아닌 인지신고를 하여야 합니다. 인지신고 방법은 인지신고 절차 및 서류안내를 참고하시기 바랍니다.
+
+※ 가족관계등록증명서상 혼인신고일로 부터 300일 미만내에 아이가 출생하였을 경우는 '모'의 혼인관계증명서(초혼이라는 사실증명)를 첨부하셔야 합니다.
+</textarea> 
+										</span>
+									</li>
+								
+									<li v_grpcd="NP0014" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0016" name="bussCd" value="NP0016" v_grpcd="NP0014" v_grpnm="가족관계" v_bussnm="혼인신고">
+											<label for="bussCd_NP0016">혼인신고</label>
+											<textarea id="posppr_NP0016" title="Required docuements for 혼인신고" style="display: none;">1. 한국인과 한국인의 혼인신고
+
+1) 구비서류
+
+ㅇ 전자적송부신청서(대사관 비치)
+ㅇ 혼인신고서 1부(증인란에 부 또는 모를 제외한 한국인 2명의 서명 필요)
+    (대사관 비치 또는 주네팔한국대사관 홈페이지-전자민원-양식다운로드)
+ㅇ 당사자 쌍방의 여권 사본 각 1부
+ㅇ 당사자 쌍방의 혼인관계 증명서 원본 1부 및 가족관계증명서 원본 1부
+   - 가족관계증명서 및 혼인관계증명서는 인터넷 사이트 전자가족관계 등록 시스템(efamily.scourt.go.kr)에서 무료 발급 가능함.
+   - 공인인증서 필요함.
+
+※ 혼인신고서 양식 및 작성요령은 주네팔한국대사관 홈페이지-영사업무-가족관계등록-12.혼인신고절차 참조
+
+
+2. 한국인과 네팔인의 혼인신고
+
+1) 유의사항
+
+ㅇ 네팔 거주자로 네팔 혼인증명서를 먼저 발급하였을 경우에 해당. 
+ㅇ 네팔 혼인신고 완료 후 해당 구비서류를 주네팔대사관 영사부로 제출.
+
+ 
+2) 구비서류
+
+ㅇ 전자적송부신청서(대사관 비치)
+ㅇ 혼인신고서 1부 (대사관 비치 또는 주네팔한국대사관 홈페이지-전자민원-양식다운로드)
+※ 혼인신고서 작성시 배우자의 성명이 네팔 혼인증명서상의 성명과 일치하여야 합니다.
+ㅇ 네팔 정부에서 발행하는 혼인관계증명서(네팔내무부 발행) 원본- 한글번역본 1부 필
+ㅇ 부부의 여권 사본 각 1부
+※ 배우자가 여권이 없을 경우 시민증 사본 및 한글 번역본 1부 첨부
+ㅇ 한국인 배우자의 기본증명서 원본 1부, 혼인관계증명서 원본 1부 및 가족관계증명서 원본 1부
+ - 가족관계증명서 및 혼인관계증명서, 기본증명서는 인터넷 사이트 전자가족관계 등록 시스템(efamily.scourt.go.kr)에서 무료 발급 가능함.
+ㅇ수수료 없음
+ㅇ소요기간 : 2주-4주</textarea> 
+										</span>
+									</li>
+								
+									<li v_grpcd="NP0017" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0018" name="bussCd" value="NP0018" v_grpcd="NP0017" v_grpnm="증명서 발급" v_bussnm="출입국에 관한 사실증명">
+											<label for="bussCd_NP0018">출입국에 관한 사실증명</label>
+											<textarea id="posppr_NP0018" title="Required docuements for 출입국에 관한 사실증명" style="display: none;">1. 구비서류
+
+  ㅇ 사실증명 발급 열람 신청서 1부(본인이 대사관을 방문하여 직접 증명발급을 신청하는 경우 불요)
+  ㅇ 여권 사본 1부
+  ㅇ 미성년자의 경우 친권이 있는 부 또는 모의 여권 사본 1부와 가족관계증명서 1부  
+
+2. 수수료 : 1부당 미화  $2/  소액권으로 준비 요망.
+
+  ㅇ 인터넷 사이트 정부24(www.gov.kr)에서 직접 신청할 경우 대사관을 방문하지 않고 무료로 발급 받을수 있음
+
+3. 소요기간 : 당일 (전산시스템의 문제 발생시 소요기간이 길어질 수 있습니다)
+
+4. 기타사항
+
+  ㅇ본 증명서는 인천공항 내 입국과 출국 일자만을 표기하며 출입국 국가는 표기되지 않습니다.
+  ㅇ외국인 국적자는 신청이 불가합니다.
+      * 본인인 외국인이 완전 출국한 경우 : 본인인 외국인을 고용하였던 자 또는 그 대리인이 신청</textarea> 
+										</span>
+									</li>
+								
+									<li v_grpcd="NP0017" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0019" name="bussCd" value="NP0019" v_grpcd="NP0017" v_grpnm="증명서 발급" v_bussnm="신원조사[범죄경력]증명서">
+											<label for="bussCd_NP0019">신원조사[범죄경력]증명서</label>
+											<textarea id="posppr_NP0019" title="Required docuements for 신원조사[범죄경력]증명서" style="display: none;">1. 구비서류
+
+  ㅇ여권 사본 1부
+  ㅇ신청서 1부(대사관 비치)
+  ㅇ여권 사진 1장
+
+2. 수수료 : 없음
+
+3. 발급 소요기간 : 1주일 ~10일</textarea> 
+										</span>
+									</li>
+								
+									<li v_grpcd="NP0021" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0022" name="bussCd" value="NP0022" v_grpcd="NP0021" v_grpnm="공인인증서" v_bussnm="공인인증서 신규 및 재발급">
+											<label for="bussCd_NP0022">공인인증서 신규 및 재발급</label>
+											<textarea id="posppr_NP0022" title="Required docuements for 공인인증서 신규 및 재발급" style="display: none;">1.구비사항
+
+  ㅇ 여권
+  ㅇ 공인인증서비스 신청서(대사관에 비치)
+  ㅇ 법정대리인 동의서(미성년자의 경우/ 대사관에 비치)
+  ㅇ 가족관계증명서(미성년자의 경우)
+
+  ** 신청인이 미성년자인 경우 법정대리인(부 또는 모 등)과 반드시 동행
+       - 가족관계증명서, 법정대리인의 여권 사본 첨부
+
+  ** 가족관계등록부(혼인관계증명서, 기본증명서, 가족관계증명서 등) 발급은
+      - 인터넷 사이트 전자가족관계 등록 시스템(efamily.scourt.go.kr) 접속 후 무료로 발급 가능
+      - 공인인증서 필요함(부모의 공인인증서로 상기 사이트 접속 후 발급 가능)
+
+2. 수수료 : 무료
+
+3. 소요기일 : 당일발급
+
+  ㅇ전산장애로 인한  시스템 문제 발생시 당일 발급이 어려울 수도 있음.</textarea> 
+										</span>
+									</li>
+								
+									<li v_grpcd="NP0004" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0005" name="bussCd" value="NP0005" v_grpcd="NP0004" v_grpnm="1" v_bussnm="일반 사서증서[위임장 등]의 인증">
+											<label for="bussCd_NP0005">일반 사서증서[위임장 등]의 인증</label>
+											<textarea id="posppr_NP0005" title="Required docuements for 일반 사서증서[위임장 등]의 인증" style="display: none;">1. 구비사항
+
+  ㅇ 여권
+  ㅇ 위임장(대사관 비치)
+
+2.. 수수료 :  미화 $4(일반 위임장은 $2)/ 소액권으로 준비 요망.
+
+3. 기타사항 : 시스템상 전산장애 발생시 당일 발급이 어려울 수 있음.</textarea> 
+										</span>
+									</li>
+								
+									<li v_grpcd="NP0004" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0006" name="bussCd" value="NP0006" v_grpcd="NP0004" v_grpnm="1" v_bussnm="주재국 공문서 등의 확인">
+											<label for="bussCd_NP0006">주재국 공문서 등의 확인</label>
+											<textarea id="posppr_NP0006" title="Required docuements for 주재국 공문서 등의 확인" style="display: none;">1. 구비사항
+
+   ㅇ  여권
+   ㅇ 공증 받고자 하는 문서
+
+2.. 수수료 미화 $4/ 소액권으로 준비 요망.
+
+3. 기타사항 : 당일 시스템상 전산장애 발생시 당일 발급이 어려울 수도 있음.</textarea> 
+										</span>
+									</li>
+								
+									<li v_grpcd="NP0004" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0007" name="bussCd" value="NP0007" v_grpcd="NP0004" v_grpnm="1" v_bussnm="번역문의 인증">
+											<label for="bussCd_NP0007">번역문의 인증</label>
+											<textarea id="posppr_NP0007" title="Required docuements for 번역문의 인증" style="display: none;">1. 구비서류
+
+  ㅇ 여권
+  ㅇ 원본 문서와 번역한 문서
+
+2. 수수료 : 미화 $4/ 소액권으로 준비 요망.
+
+3. 기타사항
+
+   ㅇ 가족관계등록부(혼인관계증명서, 기본증명서, 가족관계증명서 등) 발급은
+      - 인터넷 사이트 전자가족관계 등록 시스템(efamily.scourt.go.kr) 접속 후 무료로 발급 가능
+      - 공인인증서 필요함
+   ㅇ 당일 시스템상 전산장애 발생시 당일 발급이 어려울 수도 있음.</textarea> 
+										</span>
+									</li>
+								
+									<li v_grpcd="NP0004" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0008" name="bussCd" value="NP0008" v_grpcd="NP0004" v_grpnm="1" v_bussnm="행정기관 제출용 문서확인">
+											<label for="bussCd_NP0008">행정기관 제출용 문서확인</label>
+											<textarea id="posppr_NP0008" title="Required docuements for 행정기관 제출용 문서확인" style="display: none;">1. 구비사항
+
+   ㅇ 여권
+   ㅇ 영사확인을 받고자 하는 문서
+
+3. 수수료 : 미화 $4/ 소액권으로 준비 요망.
+
+3. 기타사항 : 당일 시스템상 전산장애 발생시 당일 발급이 어려울 수도 있음.</textarea> 
+										</span>
+									</li>
+								
+									<li v_grpcd="NP0004" style="display:none;">
+										<span class="checkbox">
+											<input type="checkbox" id="bussCd_NP0009" name="bussCd" value="NP0009" v_grpcd="NP0004" v_grpnm="1" v_bussnm="인감증명 발급 위임장">
+											<label for="bussCd_NP0009">인감증명 발급 위임장</label>
+											<textarea id="posppr_NP0009" title="Required docuements for 인감증명 발급 위임장" style="display: none;">1. 구비사항
+
+   ㅇ 여권
+   ㅇ 위임장(대사관 비치)
+
+2. 수수료 : 미화 $4/ 소액권으로 준비 요망.
+
+3. 기타사항 : 당일 시스템상 전상장애 발생시 당일 발급이 어려울 수도 있음.</textarea> 
+										</span>
+									</li>
+								
+							</ul>
+						</div>
+						<!--// checkboxList -->
+					</div>
+					<!--// compSelect -->
+					<!-- datepicker -->
+					<div id="dp1" class="calendar01 datepicker">
+						<div id="month-wraps">
+							<button id="btn-prev" type="button" style="cursor: pointer;" title="previous month"></button>
+							<div id="month-title" role="heading" aria-live="assertive" aria-atomic="true">JAN 2025</div>
+							<button id="btn-next" type="button" style="cursor: pointer;" title="next month"></button>
+						</div>
+						<table id="calendar" role="grid" title="calendar" tabindex="0">
+							<caption>Calendar</caption>
+							<thead>
+								<tr id="weekdays">
+									<th id="Sunday" style="color:red">
+										<abbr title="Sunday">SUN</abbr>
+									</th>
+									<th id="Monday">
+										<abbr title="Monday">MON</abbr>
+									</th>
+									<th id="Tuesday">
+										<abbr title="Tuesday">TUE</abbr>
+									</th>
+									<th id="Wednesday">
+										<abbr title="Wednesday">WED</abbr>
+									</th>
+									<th id="Thursday">
+										<abbr title="Thursday">THU</abbr>
+									</th>
+									<th id="Friday">
+										<abbr title="Friday">FRI</abbr>
+									</th>
+									<th id="Saturday" style="color:blue">
+										<abbr title="Saturday">SAT</abbr>
+									</th>
+								</tr>
+							</thead>
+							<tbody style="cursor: pointer">	<tr id="row1">
+		<td class="empty">&nbsp;</td>
+		<td class="empty">&nbsp;</td>
+		<td class="empty">&nbsp;</td>
+		<td id="day1" class="bforeDay" headers="row1 WED" role="gridcell" aria-selected="false">1</td>		<td id="day2" class="bforeDay" headers="row1 THU" role="gridcell" aria-selected="false">2</td>		<td id="day3" class="bforeDay" headers="row1 FRI" role="gridcell" aria-selected="false">3</td>		<td id="day4" class="bforeDay" headers="row1 SAT" role="gridcell" aria-selected="false">4</td>	</tr>
+	<tr id="row1">
+		<td id="day5" class="bforeDay" headers="row2 SUN" role="gridcell" aria-selected="false">5</td>		<td id="day6" class="bforeDay" headers="row2 MON" role="gridcell" aria-selected="false">6</td>		<td id="day7" class="bforeDay" headers="row2 TUE" role="gridcell" aria-selected="false">7</td>		<td id="day8" class="bforeDay" headers="row2 WED" role="gridcell" aria-selected="false">8</td>		<td id="day9" class="bforeDay" headers="row2 THU" role="gridcell" aria-selected="false">9</td>		<td id="day10" class="bforeDay" headers="row2 FRI" role="gridcell" aria-selected="false">10</td>		<td id="day11" class="bforeDay" headers="row2 SAT" role="gridcell" aria-selected="false">11</td>	</tr>
+	<tr id="row2">
+		<td id="day12" class="bforeDay" headers="row3 SUN" role="gridcell" aria-selected="false">12</td>		<td id="day13" class="bforeDay" headers="row3 MON" role="gridcell" aria-selected="false">13</td>		<td id="day14" class="bforeDay" headers="row3 TUE" role="gridcell" aria-selected="false">14</td>		<td id="day15" class="bforeDay" headers="row3 WED" role="gridcell" aria-selected="false">15</td>		<td id="day16" class="bforeDay" headers="row3 THU" role="gridcell" aria-selected="false">16</td>		<td id="day17" class="bforeDay" headers="row3 FRI" role="gridcell" aria-selected="false">17</td>		<td id="day18" class="bforeDay" headers="row3 SAT" role="gridcell" aria-selected="false">18</td>	</tr>
+	<tr id="row3">
+		<td id="day19" class="bforeDay" headers="row4 SUN" role="gridcell" aria-selected="false">19</td>		<td id="day20" class="bforeDay" headers="row4 MON" role="gridcell" aria-selected="false">20</td>		<td id="day21" class="bforeDay" headers="row4 TUE" role="gridcell" aria-selected="false">21</td>		<td id="day22" headers="row4 WED" role="gridcell" aria-selected="false" class="nDay"><a href="javascript:void(0);">22</a></td>		<td id="day23" headers="row4 THU" role="gridcell" aria-selected="false" class="nDay"><a href="javascript:void(0);">23</a></td>		<td id="day24" headers="row4 FRI" role="gridcell" aria-selected="false" class="nDay"><a href="javascript:void(0);">24</a></td>		<td id="day25" headers="row4 SAT" role="gridcell" aria-selected="false" class="nDay"><a href="javascript:void(0);" style="color:blue">25</a></td>	</tr>
+	<tr id="row4">
+		<td id="day26" headers="row5 SUN" role="gridcell" aria-selected="false" class="nDay"><a href="javascript:void(0);" style="color:red">26</a></td>		<td id="day27" headers="row5 MON" role="gridcell" aria-selected="false" class="nDay"><a href="javascript:void(0);">27</a></td>		<td id="day28" headers="row5 TUE" role="gridcell" aria-selected="false" class="nDay"><a href="javascript:void(0);">28</a></td>		<td id="day29" headers="row5 WED" role="gridcell" aria-selected="false" class="nDay"><a href="javascript:void(0);">29</a></td>		<td id="day30" headers="row5 THU" role="gridcell" aria-selected="false" class="nDay"><a href="javascript:void(0);">30</a></td>		<td id="day31" headers="row5 FRI" role="gridcell" aria-selected="false" class="nDay"><a href="javascript:void(0);">31</a></td>		<td class="empty">&nbsp;</td>
+	</tr></tbody>
+						</table>
+						<div id="bn_prev-label" class="offscreen">
+							Go to previous month
+						</div>
+						<div id="bn_next-label" class="offscreen">
+							Go to next month
+						</div>
+					</div>
+					<!--// datepicker -->
+					<!-- timeSelect -->
+					<div class="timeSelect">
+						<!-- labelArea -->
+						<div class="labelArea">
+							<span class="v1">Unavailable</span>
+							<span class="v2">Available</span>
+							<span class="v4">Complete</span>
+							<span class="v3">Selected</span>
+						</div>
+						<!--// labelArea -->
+						<!-- radioList -->
+						<div id="timeDiv" class="radioList">
+							<ul>
+								<li>&nbsp;</li>
+							</ul>
+						</div>
+						<!--// radioList -->
+					</div>
+					<!--// timeSelect -->
+				</div>
+				<!--// boxLine -->
+				<!-- flexM -->
+				<div class="flexM listTop">
+					<p class="blTxt">※Please check the required documents for each service.</p>
+					<button type="button" id="delAllBtn" class="btnR fNone">DeleteAll</button>
+				</div>
+				<!--// flexM -->
+				<!-- boxLine -->
+				<div class="boxLine box02">
+					<div class="icoTxt">
+						<span class="icon"><img src="/images/portal/v2/ico-place.svg" alt=""></span>
+						<p>Diplomatic Mission</p>
+						<strong>Embassy of the Republic of Korea in Nepal</strong>
+					</div>
+					<div class="icoTxt">
+						<span class="icon"><img src="/images/portal/v2/ico-date-time.svg" alt=""></span>
+						<p>Visit date and time</p>
+						<strong id="timeInfoP">Please select a visit date and time</strong>
+					</div>
+					<ul id="selBussListUl">
+						<li class="flexM">Please select services</li>
+					</ul>
+				</div>
+				<!--// boxLine -->
+
+				<!-- btnAreaLR -->
+				<div class="btnAreaLR">
+					<div class="btnA_l">
+						<button type="button" id="cnclBtn" class="btn white">Cancel</button>
+					</div>
+					<div class="btnA_r">
+						<button type="button" id="befBtn" class="btn white">Previous</button>
+						<button type="button" id="aftBtn" class="btn dBlue">Next</button>
+					</div>
+				</div>
+				<!--// btnAreaLR -->
+
+			</div>
+		</div>
+	</section>
+	<!--// container E-->
+
+	<!-- footer	-->
+	<footer id="footer_section" class="section fp-auto-height">
+		
+
+		<!-- top -->
+		<div class="top">
+			<div class="inner">
+				<ul class="util">
+					<li><a href="javascript:void(0);" onclick="javascript:fn_policyPop('chkUseStplat');">Terms and Conditions</a></li>
+					<li><a href="javascript:void(0);" onclick="javascript:fn_policyPop('chkIndividualStplat');"><strong>PrivacyPolicy</strong></a></li>
+				</ul>
+				<div class="familySite">
+					<button type="button">Go to Other Websites</button>
+					<ul>
+						<li><a href="http://www.oka.go.kr/oka_en" target="_blank" title="새창열림">Overseas Koreans Agency</a></li>
+						<li><a href="http://efamily.scourt.go.kr" target="_blank" title="새창열림">Family Relations</a></li>
+						<li><a href="http://www.hikorea.go.kr" target="_blank" title="새창열림">Hi korea</a></li>
+						<li><a href="https://mwpt.mma.go.kr" target="_blank" title="새창열림">Military Civil Service Portal</a></li>
+						<li><a href="https://minwon.police.go.kr" target="_blank" title="새창열림">Police Civil Service Portal</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--// top -->
+		<div class="inner">
+			<p><img src="/images/portal/v2/logo_eng.svg" alt=" 재외동포청"></p>
+			<div>
+				<dl>
+					<dt>Call Center</dt>
+					<dd>+82. 2. 6747. 0404</dd>
+				</dl>
+				<dl>
+					<dt>System Error</dt>
+					<dd><span>(Korea) 02. 6399. 7181</span><span>(Abroad)+82. 2. 6399. 7181</span></dd>
+				</dl>
+				<dl>
+					<dt>Support Center</dt>
+					<dd>15th floor, Twin Tree A, 6 Yulgok-ro, Jongno-gu,Seoul, South Korea</dd>
+				</dl>
+				<dl>
+					<dt>Main Office</dt>
+					<dd>241 Incheon Tower-Daero, Yeonsu-gu,Incheon, South Korea</dd>
+				</dl>
+				<p>COPYRIGHT⒞ Consular 365 For Oversease Koreans. AllRights Reserved.</p>
+			</div>
+		</div>
+<script>
+$(function(){
+	var familySite = $(".familySite button");
+	familySite.click(function(){
+		if($(this).hasClass("on")){
+			$(this).removeClass("on").siblings("ul").slideUp(200);
+		}else{
+			$(this).addClass("on").siblings("ul").slideDown(200);
+		}
+	});
+})
+
+/********************************************
+@함수명  	fn_policyPop
+@설명   	약관 화면 팝업
+@인자   	kind 약관 종류 (chkUseStplat:이용약관, chkIndividualStplat:개인정보처리방침)
+@반환    	
+@작성일  	2024. 03. 06.
+@작성자  	이정훈
+@변경일		변경자        변경내역 
+2024.03.06	김종현        최초작성
+*********************************************/
+function fn_policyPop(kind) {
+	var loginPopUri = "/cipl/0100/loginPopEng.do?showDiv=" + kind;
+	window.open(loginPopUri, "policyPop", "width=600, height=700");
+}
+</script>
+	</footer>
+	<!--// footer E-->
+
+	<!-- // 구비서류 레이어팝업 시작 -->  
+	<div class="layerPop" id="popup2">
+		<div class="inner">
+			<div class="cont">
+				<strong class="tit">구비서류</strong>
+				<div id="requiredDocumentInnerHtml" class="bot"></div>
+			</div>
+			<a href="javascript:void(0);" onclick="fn_layer_close(this)">닫기</a>
+		</div>
+	</div>
+	<!-- // 구비서류 레이어팝업 끝 -->
+</div>
+<!--// wrap E-->
+
+<div id="loading_mask" class="loading_mask" style="display: none;">
+	<span> <img alt="예약 가능한 방문 일자를 조회 중 입니다." src="/images/loading.gif"> <br> 예약 가능한 방문
+		일자를 조회 중 입니다. <br> 잠시만 기다려주세요.
+	</span>
+</div>
+<div id="loading_maskTime" class="loading_maskTime" style="display: none;">
+	<span> <img alt="예약 가능한 방문 시간을 조회 중 입니다." src="/images/loading.gif"> <br> 예약 가능한 방문
+		시간을 조회 중 입니다. <br> 잠시만 기다려주세요.
+	</span>
+</div>
+
+</body></html>

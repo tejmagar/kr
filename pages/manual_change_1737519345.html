@@ -1,0 +1,2177 @@
+<html lang="en" style="overflow: hidden;"><head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="title" content="G4K">
+<meta name="author" content="외교부">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- 2024.01.25 김종현  -->
+ <!-- 2024.01.25 김종현  -->
+ <!--  복호화[2020-04-27 추가]  -->
+
+<!--  css Start -->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/css/v2/portal_common.css?ver=20240119">	<!-- 2023-11-28  v2적용 -->
+<link rel="stylesheet" type="text/css" href="/css/v2/portal_layout.css?ver=20240808">	<!-- 2023-12-27  v2적용 -->
+<link rel="stylesheet" type="text/css" href="/css/v2/responsive.css?ver=20240710">	<!-- 2023-11-28  v2적용 -->
+<link rel="stylesheet" type="text/css" href="/css/v2/tui-date-picker.css?ver=20240119">	<!-- 2024-01-09 toast ui 달력 적용 -->
+<link rel="stylesheet" type="text/css" href="/css/v2/swiper.css?ver=20240119">	<!-- 2024-01-29 swiper적용-->
+<link rel="stylesheet" type="text/css" href="/css/netfunnel/netfunnel.css"> <!-- Netfunnel - 2024.04.16 김종현 -->
+
+<!--  js Start -->
+<script src="/js/new/jquery-1.12.4.min.js"></script>
+<script src="/js/new/jquery-ui.min.js"></script>
+<script src="/js/validation/jquery.validate.js"></script>
+<script src="/js/common/jquery-migrate-1.4.1.min.js"></script>
+<script src="/js/common/jquery.cookie.js"></script>
+
+<script src="/js/new/v2/common.js?ver=20240228"></script>	<!-- 2024-02-28  v2적용 -->
+<script src="/js/common/v2/ui.js?ver=20240308-01b"></script>	<!-- 2023-11-28  v2적용, 2024-03-08 -->
+<script src="/js/common/v2/tui-date-picker.js?ver=20240109"></script>	<!-- 2024-01-09 toast ui 달력 적용 -->
+<script src="/js/common/v2/project.js?ver=20240417"></script>	<!-- 2024-01-26  v2적용, 오픈 적용 - 2024.04.04 -->
+<script src="/js/common/v2/swiper.js"></script>	<!-- 2024-01-29  swiper -->
+<script src="/js/common/v2/common.js?ver=20240509"></script>	<!-- 2024-02-19 v2적용 -->
+
+<!-- jquery chosen -->
+<script src="/js/jquery-chosen/chosen.jquery.js"></script>
+<link type="text/css" href="/js/jquery-chosen/chosen.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+<script src="/js/common/html5shiv.min.js"></script>
+<![endif]-->
+
+<script>
+	var gfv_contextpath = "";
+	var gfv_mode = "real";
+	// Netfunnel - 2024.04.16 김종현
+	// -- 시작
+	var netfunnel = document.createElement('script');
+	var netfunnel_skin = document.createElement('script');
+	var mbuster_api_script = document.createElement('script');
+	var mbuster_meta_script = document.createElement('script');
+	if(gfv_mode == 'real'){
+		//넷퍼넬
+		netfunnel.src = '/js/netfunnel/netfunnel.js';
+		netfunnel_skin.src = '/js/netfunnel/test_skin.js';
+		document.head.appendChild(netfunnel);
+		document.head.appendChild(netfunnel_skin);
+
+	}
+	// -- 끝
+
+	var gfn_passPhrase 		= "ZzRrMDJDcnlwdG9qc0tleQ=="; // 복호화[2020-04-27 추가]
+	// validation 결과 alert 형태로 표현
+	$.validator.setDefaults({
+		onkeyup: false,
+		onclick: false,
+		onfocusout: false,
+		showErrors: function(errorMap, errorList) {
+			if(this.numberOfInvalids()) {
+				alert(errorList[0].message);
+			}
+		}
+	});
+
+	//모바일모드 구분
+	var ua = window.navigator.userAgent;
+	ua = ua.toLowerCase();
+	var platform = {};
+	var matched = {};
+	var mobileYn = "";
+	var platform_match = /(ipad)/.exec(ua) || /(ipod)/.exec(ua)
+		|| /(windows phone)/.exec(ua) || /(iphone)/.exec(ua)
+		|| /(kindle)/.exec(ua) || /(silk)/.exec(ua) || /(android)/.exec(ua)
+		|| /(win)/.exec(ua) || /(mac)/.exec(ua) || /(linux)/.exec(ua)
+		|| /(cros)/.exec(ua) || /(playbook)/.exec(ua)
+		|| /(bb)/.exec(ua) || /(blackberry)/.exec(ua)
+		|| [];
+
+	matched.platform = platform_match[0] || "";
+
+	if(matched.platform) {
+		platform[matched.platform] = true;
+	}
+
+	if(platform.android || platform.bb || platform.blackberry
+			|| platform.ipad || platform.iphone
+			|| platform.ipod || platform.kindle
+			|| platform.playbook || platform.silk
+			|| platform["windows phone"]) {
+		mobileYn = "Y";
+	}
+
+	if(platform.cros || platform.mac || platform.linux || platform.win) {
+		mobileYn = "N";
+	}
+
+</script><script src="/js/netfunnel/netfunnel.js"></script><script src="/js/netfunnel/test_skin.js"></script>
+
+<!-- common javascript -->
+<script src="/js/common/projectMsg.js?ver=20241112"></script>
+<script src="/js/common/stringUtil.js"></script>
+<script src="/js/common/fileUtil.js"></script>
+
+<!-- AES Encrypt/Decrypt  복호화[2020-04-27 추가]  -->
+<script src="/js/crypto-js/crypto-js.min.js"></script>
+<script src="/js/crypto-js/crypto.js"></script>
+
+<!-- Markany WebDRM -->
+<!--
+<script src="/solution/markany/webdrm/jQuery.XDomainRequest.js"></script>
+<script src="/solution/markany/webdrm/MaWebDRM_Common.js"></script>
+<script src="/solution/markany/webdrm/MaWebDRM.js"></script>
+-->
+
+<!-- smart editor -->
+<script src="/solution/smarteditor/js/service/HuskyEZCreator.js"></script>
+
+<title>Select a Diplomatic Mission | Reservation to Visit a Diplomatic Mission | 재외동포 365민원포털</title>
+<script src="/js/biz/ciph/v2/CIPH0801V2S1eng.js?ver=20241118"></script>
+<script>
+	
+		
+urlPrefix = "";
+			
+		
+		
+	
+
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com"><link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR"></head>
+<body style="overflow: hidden;">
+<!-- 본문바로가기 -->
+<div id="skip">
+	<a href="#gnb">Go to main menu</a>
+	<a href="#cts">Skip to content</a>
+</div>
+<div id="wrap" class="en scroll">
+	<!-- header -->
+	
+
+
+
+
+
+
+
+
+
+
+<script>
+	
+		
+var urlPrefix = "";
+			
+		
+		
+	
+
+	$(function() {
+
+		$('#hCffdnNm').keydown(function(key){
+			if(key.keyCode == 13){
+				fn_hSearch();
+			}
+		});
+
+		// 2024.05.07 김세연 로그인 후 이름 표시 추가
+		fn_userNameCheck();
+
+	});
+
+
+	//조회
+	function fn_hSearch() {
+		var param = {};
+		param.sch_cffdnNm =  $("#allSc").val();
+		param.sch_txt =  $("#allSc").val();
+		common.gfn_sendForm("/en/ciph/0900/selectUnitySearchList.do",param);
+	}
+
+
+	// 2024.05.07 김세연 로그인 후 이름 표시 추가
+	function fn_userNameCheck(){
+		var userName = "봄잔니샤";
+		if(userName === ''){
+			$('#userNameP').hide();
+		}else{
+			$('#userNameP').show();
+			$('#userNameSpan').text(userName);
+		}
+	}
+</script>
+
+	<div id="header">
+		<!-- inner -->
+		<div class="inner">
+			<h1><a href="/en/main.do"><img src="/images/en/v2/logo-e.svg" alt="365 overseas korean portal"></a></h1>
+			<a href="" class="btnMenu">Menu</a>
+		</div>
+		<!--// inner -->
+		<!-- allMenu -->
+		<div class="allMenu">
+			<!-- util -->
+			<div class="util">
+				<!-- 2024.05.07 로그인 후 이름 표시 추가 -->
+				<p class="userName" id="userNameP">
+					<span id="userNameSpan">봄잔니샤</span>
+				</p>
+
+				<!-- <a href="" class="btnRG">Log In </a>
+				<dl>
+					<dt><a href="" class="btnRG"><span>My Page</span></a></dt>
+					<dd>
+						<a href="/cipx/0100/selectCIPX0100List.do">My Reservation</a>
+						<a href="/cipl/0100/logout.do">Log Out</a>
+					</dd>
+				</dl>
+				-->
+				<!-- <a href="" class="btnRG">로그인</a> -->
+				
+					
+						
+							<dl>
+								<dt>
+									<a href="" class="btnRG"><span>My Page</span></a>
+								</dt>
+								<dd>
+									<a href="/cipi/0100/selectCIPI0100D.do">Member information</a>
+									<a href="/ciph/0800/selectResveVisitList2Eng.do">My Reservation</a>
+									<a href="/cipl/0100/logout.do">Log Out</a>
+								</dd>
+							</dl>
+						
+						
+					
+					
+				
+
+
+				<dl>
+					<dt><a href="/biz/main/main.do" class="btnLang">language</a></dt>
+					<dd>
+						<a href="/biz/main/main.do">KOREAN</a>
+						
+					</dd>
+				</dl>
+				<a href="" class="btnMenu">menu</a>
+			</div>
+			<!--// util -->
+			<!-- searchWrap -->
+			
+			<!--// searchWrap -->
+			<!-- inBox -->
+			<div class="inBox" style="display: none;">
+				<!-- menuBox -->
+				<div class="menuBox v2">
+					<h2>Menu</h2>
+					<ul>
+						<li class="more">
+							<a href="">Services</a>
+							<ul>
+
+								<li><a href="/ciph/0800/selectCIPH0801Deng.do">Reservation to Diplomatic Mission</a></li>
+								<li><a href="/ciph/1000/selectCIPHFindEmbl1000Eng.do">Find the Diplomatic Mission</a></li>
+								<li><a href="/en/draa/0100/newDRAA100LA.do">Apostille Documents Authentication</a></li>
+							</ul>
+						</li>
+						<li class="more">
+							<a href="">Documents Authentication</a>
+							<ul>
+								<li><a href="/en/draa/0100/newDRAA100LI.do?draaType=01">Certificate of Overseas Korean National Registration</a></li>
+								<li><a href="/en/draa/0100/newDRAA100LI.do?draaType=02">Certification of Emigration Notification</a></li>
+								<li><a href="/en/draa/0100/newDRAA100LI.do?draaType=05">Notarial Documents</a></li>
+							</ul>
+						</li>
+						<li class="more">
+							<a href="">My Page</a>
+							<ul>
+								<li><a href="/ciph/0800/selectResveVisitList2Eng.do">My Reservation</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!--// menuBox -->
+			</div>
+			<!--// inBox -->
+		</div>
+		<!--// allMenu -->
+	</div>
+
+	<!--// header -->
+	<!-- container -->
+	<section id="navigator">
+		<header class="hide">
+			<h2>Current Position</h2>
+		</header>
+		<div class="locate">
+			<div class="layout">
+				<ul class="location">
+					<li class="home"><span>HOME</span></li>
+					<li class="depth1"><span>Reservation to Visit a Diplomatic Mission</span></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<section class="ctn load">
+		<div class="ctn_inner">
+			<div id="cts" class="cts">
+				<h1 class="page_tit2"><span>Reservation to Visit a Diplomatic Mission</span></h1>
+
+				<!-- step -->
+				<div class="step">
+					<ol>
+						<li class="on"><span>1</span><p>Notice</p></li>
+						<li class="v1 on curr"><em class="hide">Current page</em><span>2</span><p>Select a Diplomatic Mission</p></li>
+						<li><span>3</span><p>Select the Date and Time</p></li>
+						<li><span>4</span><p>Reservation Details</p></li>
+						<li class="v2"><span>5</span><p>Completed</p></li>
+					</ol>
+				</div>
+				<!--// step -->
+
+				<h4>Select a Diplomatic Mission</h4>
+				<form id="emblForm" action="/ciph/0800/selectCIPH0801S2eng.do" method="post">
+				<div class="flexM v2">
+					<div class="flexM v2">
+						<select id="visitRegnCd" name="visitRegnCd" class="sel01" title="방문공관 소재지역">
+							<option value="">Select a Region</option>
+							
+								<option value="AA">
+									Northeast Asia
+								</option>
+							
+								<option value="BB" selected="selected">
+									South Asia and the Pacific
+								</option>
+							
+								<option value="CC">
+									North America
+								</option>
+							
+								<option value="DD">
+									Central and South America
+								</option>
+							
+								<option value="EE">
+									Europe
+								</option>
+							
+								<option value="FF">
+									Africa
+								</option>
+							
+								<option value="GG">
+									Middle East
+								</option>
+							
+						</select>
+
+						<select id="visitNatnCd" name="visitNatnCdBase" class="sel01" title="방문공관 소속나라" style="display:none;">
+							<option value="">Select a Nation</option>
+							
+								<option value="101" v_regncd="BB" style="display: block;">
+									AFGHANISTAN
+								</option>
+							
+								<option value="301" v_regncd="EE" style="display:none;">
+									ALBANIA
+								</option>
+							
+								<option value="502" v_regncd="GG" style="display:none;">
+									ALGERIA
+								</option>
+							
+								<option value="302" v_regncd="EE" style="display:none;">
+									ANDORRA
+								</option>
+							
+								<option value="503" v_regncd="FF" style="display:none;">
+									ANGOLA
+								</option>
+							
+								<option value="201" v_regncd="DD" style="display:none;">
+									ANTIGUA-BARBUDA
+								</option>
+							
+								<option value="202" v_regncd="DD" style="display:none;">
+									ARGENTINA
+								</option>
+							
+								<option value="304" v_regncd="EE" style="display:none;">
+									ARMENIA
+								</option>
+							
+								<option value="404" v_regncd="BB" style="display: block;">
+									AUSTRALIA
+								</option>
+							
+								<option value="303" v_regncd="EE" style="display:none;">
+									AUSTRIA
+								</option>
+							
+								<option value="305" v_regncd="EE" style="display:none;">
+									AZERBAIJANI
+								</option>
+							
+								<option value="205" v_regncd="DD" style="display:none;">
+									BAHAMAS
+								</option>
+							
+								<option value="104" v_regncd="GG" style="display:none;">
+									BAHRAIN
+								</option>
+							
+								<option value="105" v_regncd="BB" style="display: block;">
+									BANGLADESH
+								</option>
+							
+								<option value="206" v_regncd="DD" style="display:none;">
+									BARBADOS
+								</option>
+							
+								<option value="308" v_regncd="EE" style="display:none;">
+									BELARUS
+								</option>
+							
+								<option value="306" v_regncd="EE" style="display:none;">
+									BELGIUM
+								</option>
+							
+								<option value="207" v_regncd="DD" style="display:none;">
+									BELIZE
+								</option>
+							
+								<option value="520" v_regncd="FF" style="display:none;">
+									BENIN
+								</option>
+							
+								<option value="106" v_regncd="BB" style="display: block;">
+									BHUTAN
+								</option>
+							
+								<option value="208" v_regncd="DD" style="display:none;">
+									BOLIVIA
+								</option>
+							
+								<option value="309" v_regncd="EE" style="display:none;">
+									BOSNIA-HERCEGOVINA
+								</option>
+							
+								<option value="506" v_regncd="FF" style="display:none;">
+									BOTSWANA
+								</option>
+							
+								<option value="209" v_regncd="DD" style="display:none;">
+									BRAZIL
+								</option>
+							
+								<option value="107" v_regncd="BB" style="display: block;">
+									BRUNEI
+								</option>
+							
+								<option value="307" v_regncd="EE" style="display:none;">
+									BULGARIA
+								</option>
+							
+								<option value="589" v_regncd="FF" style="display:none;">
+									BURKINA FASO
+								</option>
+							
+								<option value="110" v_regncd="BB" style="display: block;">
+									CAMBODIA
+								</option>
+							
+								<option value="510" v_regncd="FF" style="display:none;">
+									CAMEROON
+								</option>
+							
+								<option value="213" v_regncd="CC" style="display:none;">
+									CANADA
+								</option>
+							
+								<option value="512" v_regncd="FF" style="display:none;">
+									CAPE VERDE
+								</option>
+							
+								<option value="513" v_regncd="FF" style="display:none;">
+									CENTRAL AFRICA
+								</option>
+							
+								<option value="514" v_regncd="FF" style="display:none;">
+									CHAD
+								</option>
+							
+								<option value="214" v_regncd="DD" style="display:none;">
+									CHILE
+								</option>
+							
+								<option value="112" v_regncd="AA" style="display:none;">
+									CHINA P. R.
+								</option>
+							
+								<option value="113" v_regncd="AA" style="display:none;">
+									CHINESE TAIPEI
+								</option>
+							
+								<option value="215" v_regncd="DD" style="display:none;">
+									COLOMBIA
+								</option>
+							
+								<option value="515" v_regncd="FF" style="display:none;">
+									COMOROS
+								</option>
+							
+								<option value="517" v_regncd="FF" style="display:none;">
+									CONGO D.R
+								</option>
+							
+								<option value="516" v_regncd="FF" style="display:none;">
+									CONGO P.R.
+								</option>
+							
+								<option value="412" v_regncd="BB" style="display: block;">
+									COOK IS
+								</option>
+							
+								<option value="216" v_regncd="DD" style="display:none;">
+									COSTA RICA
+								</option>
+							
+								<option value="537" v_regncd="FF" style="display:none;">
+									COTE DIVOIRE
+								</option>
+							
+								<option value="391" v_regncd="EE" style="display:none;">
+									CROATIA
+								</option>
+							
+								<option value="217" v_regncd="DD" style="display:none;">
+									CUBA
+								</option>
+							
+								<option value="114" v_regncd="EE" style="display:none;">
+									CYPRUS
+								</option>
+							
+								<option value="310" v_regncd="EE" style="display:none;">
+									CZECH
+								</option>
+							
+								<option value="313" v_regncd="EE" style="display:none;">
+									DENMARK
+								</option>
+							
+								<option value="521" v_regncd="FF" style="display:none;">
+									DJIBOUTI
+								</option>
+							
+								<option value="220" v_regncd="DD" style="display:none;">
+									DOMINICA
+								</option>
+							
+								<option value="221" v_regncd="DD" style="display:none;">
+									DOMINICAN REP.
+								</option>
+							
+								<option value="156" v_regncd="BB" style="display: block;">
+									EAST-TIMOR
+								</option>
+							
+								<option value="224" v_regncd="DD" style="display:none;">
+									ECUADOR
+								</option>
+							
+								<option value="525" v_regncd="GG" style="display:none;">
+									EGYPT
+								</option>
+							
+								<option value="225" v_regncd="DD" style="display:none;">
+									EL SALVADOR
+								</option>
+							
+								<option value="526" v_regncd="FF" style="display:none;">
+									EQUATOR-GUINEA
+								</option>
+							
+								<option value="528" v_regncd="FF" style="display:none;">
+									ERITREA
+								</option>
+							
+								<option value="312" v_regncd="EE" style="display:none;">
+									ESTONIA
+								</option>
+							
+								<option value="527" v_regncd="FF" style="display:none;">
+									ETHIOPIA
+								</option>
+							
+								<option value="418" v_regncd="BB" style="display: block;">
+									FIJI
+								</option>
+							
+								<option value="320" v_regncd="EE" style="display:none;">
+									FINLAND
+								</option>
+							
+								<option value="321" v_regncd="EE" style="display:none;">
+									FRANCE
+								</option>
+							
+								<option value="530" v_regncd="FF" style="display:none;">
+									GABON
+								</option>
+							
+								<option value="531" v_regncd="FF" style="display:none;">
+									GAMBIA
+								</option>
+							
+								<option value="323" v_regncd="EE" style="display:none;">
+									GEORGIA
+								</option>
+							
+								<option value="324" v_regncd="EE" style="display:none;">
+									GERMANY F.R
+								</option>
+							
+								<option value="532" v_regncd="FF" style="display:none;">
+									GHANA
+								</option>
+							
+								<option value="326" v_regncd="EE" style="display:none;">
+									GREECE
+								</option>
+							
+								<option value="229" v_regncd="DD" style="display:none;">
+									GRENADA
+								</option>
+							
+								<option value="231" v_regncd="DD" style="display:none;">
+									GUATEMALA
+								</option>
+							
+								<option value="533" v_regncd="FF" style="display:none;">
+									GUINEA
+								</option>
+							
+								<option value="534" v_regncd="FF" style="display:none;">
+									GUINEA BISSAU
+								</option>
+							
+								<option value="232" v_regncd="DD" style="display:none;">
+									GUYANA
+								</option>
+							
+								<option value="235" v_regncd="DD" style="display:none;">
+									HAITI
+								</option>
+							
+								<option value="236" v_regncd="DD" style="display:none;">
+									HONDURAS
+								</option>
+							
+								<option value="120" v_regncd="AA" style="display:none;">
+									HONG KONG
+								</option>
+							
+								<option value="329" v_regncd="EE" style="display:none;">
+									HUNGARY
+								</option>
+							
+								<option value="333" v_regncd="EE" style="display:none;">
+									ICELAND
+								</option>
+							
+								<option value="124" v_regncd="BB" style="display: block;">
+									INDIA
+								</option>
+							
+								<option value="125" v_regncd="BB" style="display: block;">
+									INDONESIA
+								</option>
+							
+								<option value="126" v_regncd="GG" style="display:none;">
+									IRAN
+								</option>
+							
+								<option value="127" v_regncd="GG" style="display:none;">
+									IRAQ
+								</option>
+							
+								<option value="334" v_regncd="EE" style="display:none;">
+									IRELAND
+								</option>
+							
+								<option value="128" v_regncd="GG" style="display:none;">
+									ISRAEL
+								</option>
+							
+								<option value="335" v_regncd="EE" style="display:none;">
+									ITALY
+								</option>
+							
+								<option value="240" v_regncd="DD" style="display:none;">
+									JAMAICA
+								</option>
+							
+								<option value="130" v_regncd="AA" style="display:none;">
+									JAPAN
+								</option>
+							
+								<option value="131" v_regncd="GG" style="display:none;">
+									JORDAN
+								</option>
+							
+								<option value="133" v_regncd="EE" style="display:none;">
+									KAZAKHSTAN
+								</option>
+							
+								<option value="540" v_regncd="FF" style="display:none;">
+									KENYA
+								</option>
+							
+								<option value="429" v_regncd="BB" style="display: block;">
+									KIRIBATI
+								</option>
+							
+								<option value="337" v_regncd="EE" style="display:none;">
+									KOSOVO
+								</option>
+							
+								<option value="135" v_regncd="GG" style="display:none;">
+									KUWAIT
+								</option>
+							
+								<option value="134" v_regncd="EE" style="display:none;">
+									KYRGYZSTAN
+								</option>
+							
+								<option value="138" v_regncd="BB" style="display: block;">
+									LAOS
+								</option>
+							
+								<option value="339" v_regncd="EE" style="display:none;">
+									LATVIA
+								</option>
+							
+								<option value="139" v_regncd="GG" style="display:none;">
+									LEBANON
+								</option>
+							
+								<option value="542" v_regncd="FF" style="display:none;">
+									LESOTHO
+								</option>
+							
+								<option value="543" v_regncd="FF" style="display:none;">
+									LIBERIA
+								</option>
+							
+								<option value="544" v_regncd="GG" style="display:none;">
+									LIBYA
+								</option>
+							
+								<option value="340" v_regncd="EE" style="display:none;">
+									LIECHTENSTEIN
+								</option>
+							
+								<option value="342" v_regncd="EE" style="display:none;">
+									LITHUANIA
+								</option>
+							
+								<option value="341" v_regncd="EE" style="display:none;">
+									LUXEMBOURG
+								</option>
+							
+								<option value="550" v_regncd="FF" style="display:none;">
+									MADAGASCAR
+								</option>
+							
+								<option value="551" v_regncd="FF" style="display:none;">
+									MALAWI
+								</option>
+							
+								<option value="143" v_regncd="BB" style="display: block;">
+									MALAYSIA
+								</option>
+							
+								<option value="144" v_regncd="BB" style="display: block;">
+									MALDIVES
+								</option>
+							
+								<option value="552" v_regncd="FF" style="display:none;">
+									MALI
+								</option>
+							
+								<option value="344" v_regncd="EE" style="display:none;">
+									MALTA
+								</option>
+							
+								<option value="437" v_regncd="BB" style="display: block;">
+									MARSHALL ISLANDS
+								</option>
+							
+								<option value="553" v_regncd="GG" style="display:none;">
+									MAURITANIA
+								</option>
+							
+								<option value="554" v_regncd="FF" style="display:none;">
+									MAURITIUS
+								</option>
+							
+								<option value="248" v_regncd="DD" style="display:none;">
+									MEXICO
+								</option>
+							
+								<option value="435" v_regncd="" style="display:none;">
+									MICRONESIA
+								</option>
+							
+								<option value="346" v_regncd="EE" style="display:none;">
+									MOLDOVA
+								</option>
+							
+								<option value="345" v_regncd="EE" style="display:none;">
+									MONACO
+								</option>
+							
+								<option value="145" v_regncd="AA" style="display:none;">
+									MONGOLIA
+								</option>
+							
+								<option value="347" v_regncd="EE" style="display:none;">
+									MONTENEGRO
+								</option>
+							
+								<option value="555" v_regncd="GG" style="display:none;">
+									MOROCCO
+								</option>
+							
+								<option value="556" v_regncd="FF" style="display:none;">
+									MOZAMBIQUE
+								</option>
+							
+								<option value="108" v_regncd="BB" style="display: block;">
+									MYANMAR
+								</option>
+							
+								<option value="560" v_regncd="" style="display:none;">
+									NAMIBIA
+								</option>
+							
+								<option value="441" v_regncd="BB" style="display: block;">
+									NAURU
+								</option>
+							
+								<option value="148" v_regncd="BB" selected="selected" style="display: block;">
+									NEPAL
+								</option>
+							
+								<option value="350" v_regncd="EE" style="display:none;">
+									NETHERLANDS
+								</option>
+							
+								<option value="446" v_regncd="BB" style="display: block;">
+									NEW ZEALAND
+								</option>
+							
+								<option value="252" v_regncd="DD" style="display:none;">
+									NICARAGUA
+								</option>
+							
+								<option value="561" v_regncd="FF" style="display:none;">
+									NIGER
+								</option>
+							
+								<option value="562" v_regncd="FF" style="display:none;">
+									NIGERIA
+								</option>
+							
+								<option value="343" v_regncd="" style="display:none;">
+									NORTH MACEDONIA
+								</option>
+							
+								<option value="352" v_regncd="EE" style="display:none;">
+									NORWAY
+								</option>
+							
+								<option value="150" v_regncd="GG" style="display:none;">
+									OMAN
+								</option>
+							
+								<option value="153" v_regncd="BB" style="display: block;">
+									PAKISTAN
+								</option>
+							
+								<option value="451" v_regncd="BB" style="display: block;">
+									PALAU
+								</option>
+							
+								<option value="154" v_regncd="GG" style="display:none;">
+									PALESTINE
+								</option>
+							
+								<option value="255" v_regncd="DD" style="display:none;">
+									PANAMA
+								</option>
+							
+								<option value="452" v_regncd="BB" style="display: block;">
+									PAPUA NEW GUINEA
+								</option>
+							
+								<option value="256" v_regncd="DD" style="display:none;">
+									PARAGUAY
+								</option>
+							
+								<option value="257" v_regncd="DD" style="display:none;">
+									PERU
+								</option>
+							
+								<option value="360" v_regncd="EE" style="display:none;">
+									POLAND
+								</option>
+							
+								<option value="361" v_regncd="EE" style="display:none;">
+									PORTUGAL
+								</option>
+							
+								<option value="258" v_regncd="" style="display:none;">
+									PUERTO RICO
+								</option>
+							
+								<option value="159" v_regncd="GG" style="display:none;">
+									QATAR
+								</option>
+							
+								<option value="365" v_regncd="EE" style="display:none;">
+									RUMANIA
+								</option>
+							
+								<option value="366" v_regncd="EE" style="display:none;">
+									RUSSIA
+								</option>
+							
+								<option value="566" v_regncd="FF" style="display:none;">
+									RWANDA
+								</option>
+							
+								<option value="371" v_regncd="EE" style="display:none;">
+									SAN MARINO
+								</option>
+							
+								<option value="571" v_regncd="FF" style="display:none;">
+									SAOTOME-PRINCIPE
+								</option>
+							
+								<option value="162" v_regncd="GG" style="display:none;">
+									SAUDI ARABIA
+								</option>
+							
+								<option value="572" v_regncd="FF" style="display:none;">
+									SENEGAL
+								</option>
+							
+								<option value="367" v_regncd="EE" style="display:none;">
+									SERBIA
+								</option>
+							
+								<option value="395" v_regncd="EE" style="display:none;">
+									SERBIA(YUGO)
+								</option>
+							
+								<option value="573" v_regncd="FF" style="display:none;">
+									SEYCHELLES
+								</option>
+							
+								<option value="574" v_regncd="FF" style="display:none;">
+									SIERRA LEONE
+								</option>
+							
+								<option value="164" v_regncd="BB" style="display: block;">
+									SINGAPORE
+								</option>
+							
+								<option value="368" v_regncd="EE" style="display:none;">
+									SLOVAK
+								</option>
+							
+								<option value="370" v_regncd="EE" style="display:none;">
+									SLOVENIA
+								</option>
+							
+								<option value="575" v_regncd="FF" style="display:none;">
+									SOMALIA
+								</option>
+							
+								<option value="576" v_regncd="FF" style="display:none;">
+									SOUTH AFRICA
+								</option>
+							
+								<option value="580" v_regncd="FF" style="display:none;">
+									SOUTH SUDAN
+								</option>
+							
+								<option value="372" v_regncd="EE" style="display:none;">
+									SPAIN
+								</option>
+							
+								<option value="111" v_regncd="BB" style="display: block;">
+									SRI LANKA
+								</option>
+							
+								<option value="262" v_regncd="DD" style="display:none;">
+									ST. KITTS-NEVIS
+								</option>
+							
+								<option value="263" v_regncd="DD" style="display:none;">
+									ST. LUSIA
+								</option>
+							
+								<option value="264" v_regncd="DD" style="display:none;">
+									ST. VINCENT
+								</option>
+							
+								<option value="578" v_regncd="FF" style="display:none;">
+									SUDAN
+								</option>
+							
+								<option value="265" v_regncd="DD" style="display:none;">
+									SURINAM
+								</option>
+							
+								<option value="579" v_regncd="FF" style="display:none;">
+									SWAZILAND
+								</option>
+							
+								<option value="373" v_regncd="EE" style="display:none;">
+									SWEDEN
+								</option>
+							
+								<option value="374" v_regncd="EE" style="display:none;">
+									SWITZERLAND
+								</option>
+							
+								<option value="165" v_regncd="GG" style="display:none;">
+									SYRIA
+								</option>
+							
+								<option value="169" v_regncd="EE" style="display:none;">
+									TAJIKISTAN
+								</option>
+							
+								<option value="583" v_regncd="FF" style="display:none;">
+									TANZANIA
+								</option>
+							
+								<option value="170" v_regncd="BB" style="display: block;">
+									THAILAND
+								</option>
+							
+								<option value="155" v_regncd="BB" style="display: block;">
+									THE PHILIPPINES 
+								</option>
+							
+								<option value="461" v_regncd="BB" style="display: block;">
+									THE WESTERN SAMOA
+								</option>
+							
+								<option value="584" v_regncd="FF" style="display:none;">
+									TOGO
+								</option>
+							
+								<option value="473" v_regncd="BB" style="display: block;">
+									TONGA
+								</option>
+							
+								<option value="268" v_regncd="DD" style="display:none;">
+									TRINIDAD-TOBAGO
+								</option>
+							
+								<option value="585" v_regncd="GG" style="display:none;">
+									TUNISIA
+								</option>
+							
+								<option value="171" v_regncd="EE" style="display:none;">
+									TURKEY
+								</option>
+							
+								<option value="172" v_regncd="EE" style="display:none;">
+									TURKMENISTAN
+								</option>
+							
+								<option value="475" v_regncd="BB" style="display: block;">
+									TUVALU
+								</option>
+							
+								<option value="180" v_regncd="GG" style="display:none;">
+									U.A.E
+								</option>
+							
+								<option value="588" v_regncd="FF" style="display:none;">
+									UGANDA
+								</option>
+							
+								<option value="378" v_regncd="EE" style="display:none;">
+									UKRAINE
+								</option>
+							
+								<option value="316" v_regncd="EE" style="display:none;">
+									UNITED KINGDOM
+								</option>
+							
+								<option value="275" v_regncd="CC" style="display:none;">
+									UNITED STATES
+								</option>
+							
+								<option value="274" v_regncd="DD" style="display:none;">
+									URUGUAY
+								</option>
+							
+								<option value="181" v_regncd="EE" style="display:none;">
+									UZBEKISTAN
+								</option>
+							
+								<option value="624" v_regncd="BB" style="display: block;">
+									VANUATU
+								</option>
+							
+								<option value="280" v_regncd="DD" style="display:none;">
+									VENEZUELA
+								</option>
+							
+								<option value="185" v_regncd="BB" style="display: block;">
+									VIETNAM
+								</option>
+							
+								<option value="191" v_regncd="GG" style="display:none;">
+									YEMEN
+								</option>
+							
+								<option value="595" v_regncd="FF" style="display:none;">
+									ZAMBIA
+								</option>
+							
+								<option value="565" v_regncd="FF" style="display:none;">
+									ZIMBABWE
+								</option>
+							
+						</select>
+						<select id="visitNatnCdView" name="visitNatnCd" class="sel01" title="방문공관 소속나라">
+							<option value="">Select a Nation</option>
+						<option value="101" v_regncd="BB" style="display: block;">
+									AFGHANISTAN
+								</option><option value="404" v_regncd="BB" style="display: block;">
+									AUSTRALIA
+								</option><option value="105" v_regncd="BB" style="display: block;">
+									BANGLADESH
+								</option><option value="106" v_regncd="BB" style="display: block;">
+									BHUTAN
+								</option><option value="107" v_regncd="BB" style="display: block;">
+									BRUNEI
+								</option><option value="110" v_regncd="BB" style="display: block;">
+									CAMBODIA
+								</option><option value="412" v_regncd="BB" style="display: block;">
+									COOK IS
+								</option><option value="156" v_regncd="BB" style="display: block;">
+									EAST-TIMOR
+								</option><option value="418" v_regncd="BB" style="display: block;">
+									FIJI
+								</option><option value="124" v_regncd="BB" style="display: block;">
+									INDIA
+								</option><option value="125" v_regncd="BB" style="display: block;">
+									INDONESIA
+								</option><option value="429" v_regncd="BB" style="display: block;">
+									KIRIBATI
+								</option><option value="138" v_regncd="BB" style="display: block;">
+									LAOS
+								</option><option value="143" v_regncd="BB" style="display: block;">
+									MALAYSIA
+								</option><option value="144" v_regncd="BB" style="display: block;">
+									MALDIVES
+								</option><option value="437" v_regncd="BB" style="display: block;">
+									MARSHALL ISLANDS
+								</option><option value="108" v_regncd="BB" style="display: block;">
+									MYANMAR
+								</option><option value="441" v_regncd="BB" style="display: block;">
+									NAURU
+								</option><option value="148" v_regncd="BB" selected="selected" style="display: block;">
+									NEPAL
+								</option><option value="446" v_regncd="BB" style="display: block;">
+									NEW ZEALAND
+								</option><option value="153" v_regncd="BB" style="display: block;">
+									PAKISTAN
+								</option><option value="451" v_regncd="BB" style="display: block;">
+									PALAU
+								</option><option value="452" v_regncd="BB" style="display: block;">
+									PAPUA NEW GUINEA
+								</option><option value="164" v_regncd="BB" style="display: block;">
+									SINGAPORE
+								</option><option value="111" v_regncd="BB" style="display: block;">
+									SRI LANKA
+								</option><option value="170" v_regncd="BB" style="display: block;">
+									THAILAND
+								</option><option value="155" v_regncd="BB" style="display: block;">
+									THE PHILIPPINES 
+								</option><option value="461" v_regncd="BB" style="display: block;">
+									THE WESTERN SAMOA
+								</option><option value="473" v_regncd="BB" style="display: block;">
+									TONGA
+								</option><option value="475" v_regncd="BB" style="display: block;">
+									TUVALU
+								</option><option value="624" v_regncd="BB" style="display: block;">
+									VANUATU
+								</option><option value="185" v_regncd="BB" style="display: block;">
+									VIETNAM
+								</option></select>
+					</div>
+					<div class="defSchBox flexM v2" style="overflow:visible">
+						<div class="defSch" id="sch_selectArea">
+							<select id="visitEmblCd" name="visitEmblCdBase" class="sel01" title="방문공관" style="display:none;">
+								<option value="">Select a Consulate General</option>
+								
+									<option value="AG" v_natncd="502" v_regncd="GG" v_nowdayyn="Y" v_speclnotiebegde="20240512" v_speclnotieendde="20240527" v_embltime="20250122" v_othernatncd="502" v_othernatnregncd="GG" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[ALGERIA] Embassy of the Republic of Korea to the People's Democratic Republic of Algeria
+									</option>
+									
+								
+									<option value="AU" v_natncd="404" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="404" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[AUSTRALIA] Embassy of the Republic of Korea to the Commonwealth of Australia
+									</option>
+									
+								
+									<option value="SN" v_natncd="404" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="20230201" v_speclnotieendde="20241231" v_embltime="20250122" v_othernatncd="404" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[AUSTRALIA] Consulate General of the Republic of Korea in Sydney
+									</option>
+									
+								
+									<option value="ME" v_natncd="404" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="404" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[AUSTRALIA] Melbourne Office of the Embassy of the Republic of Korea to the Commonwealth of Australia
+									</option>
+									
+								
+									<option value="BE" v_natncd="308" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="308" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[BELARUS] Embassy of the Republic of Korea in the Republic of Belarus
+									</option>
+									
+								
+									<option value="BB" v_natncd="306" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="20241213" v_speclnotieendde="20250113" v_embltime="20250122" v_othernatncd="306" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[BELGIUM] Embassy of the Republic of Korea to the The Kingdom of Belgium and the European Union
+									</option>
+									
+								
+									<option value="BB" v_natncd="306" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="20241213" v_speclnotieendde="20250113" v_embltime="20250122" v_othernatncd="341" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[BELGIUM] Embassy of the Republic of Korea to the The Kingdom of Belgium and the European Union(Adjunt)
+									</option>
+									
+								
+									<option value="BR" v_natncd="209" v_regncd="DD" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="209" v_othernatnregncd="DD" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[BRAZIL] Embassy of the Republic of Korea in the Federative Republic of Brazil
+									</option>
+									
+								
+									<option value="SO" v_natncd="209" v_regncd="DD" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="209" v_othernatnregncd="DD" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[BRAZIL] Consulate General of the Republic of Korea in Sao Paulo
+									</option>
+									
+								
+									<option value="BU" v_natncd="107" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="107" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[BRUNEI] Embassy of the Republic of Korea to the Negara Brunei Darussalam
+									</option>
+									
+								
+									<option value="BL" v_natncd="307" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="343" v_othernatnregncd="" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[BULGARIA] Embassy of the Republic of Korea to the Republic of Bulgaria(Adjunt)
+									</option>
+									
+								
+									<option value="BL" v_natncd="307" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="307" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[BULGARIA] Embassy of the Republic of Korea to the Republic of Bulgaria
+									</option>
+									
+								
+									<option value="SM" v_natncd="110" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="110" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[CAMBODIA] Siem Reap Office of the Embassy of the Republic of Korea to the Kingdom of Cambodia
+									</option>
+									
+								
+									<option value="MN" v_natncd="213" v_regncd="CC" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250121" v_othernatncd="213" v_othernatnregncd="CC" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[CANADA] Consulate General of the Republic of Korea in Montreal
+									</option>
+									
+								
+									<option value="CP" v_natncd="112" v_regncd="AA" v_nowdayyn="N" v_speclnotiebegde="20220216" v_speclnotieendde="20220319" v_embltime="20250122" v_othernatncd="112" v_othernatnregncd="AA" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[CHINA P. R.] Embassy of the Republic of Korea to the People's Republic of China
+									</option>
+									
+								
+									<option value="IV" v_natncd="537" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="20201201" v_speclnotieendde="20201201" v_embltime="20250122" v_othernatncd="589" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[COTE DIVOIRE] Embassy of the Republic of Korea to the Republic of Cote d'Ivoire(Adjunt)
+									</option>
+									
+								
+									<option value="IV" v_natncd="537" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="20201201" v_speclnotieendde="20201201" v_embltime="20250122" v_othernatncd="561" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[COTE DIVOIRE] Embassy of the Republic of Korea to the Republic of Cote d'Ivoire(Adjunt)
+									</option>
+									
+								
+									<option value="IV" v_natncd="537" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="20201201" v_speclnotieendde="20201201" v_embltime="20250122" v_othernatncd="537" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[COTE DIVOIRE] Embassy of the Republic of Korea to the Republic of Cote d'Ivoire
+									</option>
+									
+								
+									<option value="CT" v_natncd="391" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="309" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[CROATIA] Embassy of the Republic of Korea to the Republic of Croatia(Adjunt)
+									</option>
+									
+								
+									<option value="CT" v_natncd="391" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="391" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[CROATIA] Embassy of the Republic of Korea to the Republic of Croatia
+									</option>
+									
+								
+									<option value="CZ" v_natncd="310" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="310" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[CZECH] Embassy of the Republic of Korea in the Czech Republic
+									</option>
+									
+								
+									<option value="DE" v_natncd="313" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="20221111" v_speclnotieendde="20221231" v_embltime="20250122" v_othernatncd="313" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[DENMARK] Embassy of the Republic of Korea to the Kingdom of Denmark
+									</option>
+									
+								
+									<option value="DM" v_natncd="221" v_regncd="DD" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="220" v_othernatnregncd="DD" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[DOMINICAN REP.] Embassy of the Republic of Korea to the Dominican Republic(Adjunt)
+									</option>
+									
+								
+									<option value="DM" v_natncd="221" v_regncd="DD" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="205" v_othernatnregncd="DD" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[DOMINICAN REP.] Embassy of the Republic of Korea to the Dominican Republic(Adjunt)
+									</option>
+									
+								
+									<option value="DM" v_natncd="221" v_regncd="DD" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="235" v_othernatnregncd="DD" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[DOMINICAN REP.] Embassy of the Republic of Korea to the Dominican Republic(Adjunt)
+									</option>
+									
+								
+									<option value="DM" v_natncd="221" v_regncd="DD" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="201" v_othernatnregncd="DD" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[DOMINICAN REP.] Embassy of the Republic of Korea to the Dominican Republic(Adjunt)
+									</option>
+									
+								
+									<option value="DM" v_natncd="221" v_regncd="DD" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="221" v_othernatnregncd="DD" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[DOMINICAN REP.] Embassy of the Republic of Korea to the Dominican Republic
+									</option>
+									
+								
+									<option value="DM" v_natncd="221" v_regncd="DD" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="262" v_othernatnregncd="DD" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[DOMINICAN REP.] Embassy of the Republic of Korea to the Dominican Republic(Adjunt)
+									</option>
+									
+								
+									<option value="ER" v_natncd="156" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="156" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[EAST-TIMOR] Embassy of the Republic of Korea to the Democratic Republic of Timor-Leste
+									</option>
+									
+								
+									<option value="EC" v_natncd="224" v_regncd="DD" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250121" v_othernatncd="224" v_othernatnregncd="DD" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[ECUADOR] Embassy of the Republic of Korea to the Republic of Ecuador
+									</option>
+									
+								
+									<option value="EN" v_natncd="312" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="312" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="2" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[ESTONIA] Embassy of the Republic of Korea to the Republic of Estonia
+									</option>
+									
+								
+									<option value="FN" v_natncd="320" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="20221205" v_speclnotieendde="20241231" v_embltime="20250122" v_othernatncd="320" v_othernatnregncd="EE" v_onedaycnt="1" v_totcnt="2" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[FINLAND] Embassy of the Republic of Korea to the Republic of Finland
+									</option>
+									
+								
+									<option value="FN" v_natncd="320" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="20221205" v_speclnotieendde="20241231" v_embltime="20250122" v_othernatncd="312" v_othernatnregncd="EE" v_onedaycnt="1" v_totcnt="2" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[FINLAND] Embassy of the Republic of Korea to the Republic of Finland(Adjunt)
+									</option>
+									
+								
+									<option value="FR" v_natncd="321" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="20241008" v_speclnotieendde="20251031" v_embltime="20250122" v_othernatncd="345" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[FRANCE] Embassy of the Republic of Korea to the French Republic(Adjunt)
+									</option>
+									
+								
+									<option value="FR" v_natncd="321" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="20241008" v_speclnotieendde="20251031" v_embltime="20250122" v_othernatncd="321" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[FRANCE] Embassy of the Republic of Korea to the French Republic
+									</option>
+									
+								
+									<option value="GE" v_natncd="324" v_regncd="EE" v_nowdayyn="Y" v_speclnotiebegde="20211209" v_speclnotieendde="20211231" v_embltime="20250122" v_othernatncd="324" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="4" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[GERMANY F.R] Embassy of the Republic of Korea to the Federal Republic of Germany
+									</option>
+									
+								
+									<option value="FK" v_natncd="324" v_regncd="EE" v_nowdayyn="Y" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="324" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="20" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[GERMANY F.R] Consulate General of the Republic of Korea in Frankfurt
+									</option>
+									
+								
+									<option value="HB" v_natncd="324" v_regncd="EE" v_nowdayyn="Y" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="324" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[GERMANY F.R] Consulate General of the Republic of Korea in Hamburg
+									</option>
+									
+								
+									<option value="BN" v_natncd="324" v_regncd="EE" v_nowdayyn="Y" v_speclnotiebegde="20211201" v_speclnotieendde="20220131" v_embltime="20250122" v_othernatncd="324" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="2" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[GERMANY F.R] Bonn Office of the Embassy of the Republic of Korea to the Federal Republic of Germany
+									</option>
+									
+								
+									<option value="GR" v_natncd="326" v_regncd="EE" v_nowdayyn="Y" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="326" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[GREECE] Embassy of the Republic of Korea to the Hellenic Republic
+									</option>
+									
+								
+									<option value="GR" v_natncd="326" v_regncd="EE" v_nowdayyn="Y" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="301" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[GREECE] Embassy of the Republic of Korea to the Hellenic Republic(Adjunt)
+									</option>
+									
+								
+									<option value="GR" v_natncd="326" v_regncd="EE" v_nowdayyn="Y" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="114" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[GREECE] Embassy of the Republic of Korea to the Hellenic Republic(Adjunt)
+									</option>
+									
+								
+									<option value="HK" v_natncd="120" v_regncd="AA" v_nowdayyn="N" v_speclnotiebegde="20220601" v_speclnotieendde="20251231" v_embltime="20250122" v_othernatncd="120" v_othernatnregncd="AA" v_onedaycnt="1" v_totcnt="1" v_idnycnfrmnoessntlyn="Y" style="display:none;"> 
+										[HONG KONG] Consulate General of the Republic of Korea in Hong Kong
+									</option>
+									
+								
+									<option value="HG" v_natncd="329" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="329" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[HUNGARY] Embassy of the Republic of Korea to the Republic of Hungary
+									</option>
+									
+								
+									<option value="ID" v_natncd="124" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="20220103" v_speclnotieendde="20220228" v_embltime="20250122" v_othernatncd="124" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[INDIA] Embassy of the Republic of Korea to the Republic of India
+									</option>
+									
+								
+									<option value="MU" v_natncd="124" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="124" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[INDIA] Consulate General of the Republic of Korea in Mumbai
+									</option>
+									
+								
+									<option value="CE" v_natncd="124" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="124" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[INDIA] Consulate General of the Republic of Korea in Chennai
+									</option>
+									
+								
+									<option value="IQ" v_natncd="127" v_regncd="GG" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="127" v_othernatnregncd="GG" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[IRAQ] Embassy of the Republic of Korea to the Republic of Iraq
+									</option>
+									
+								
+									<option value="IL" v_natncd="334" v_regncd="EE" v_nowdayyn="Y" v_speclnotiebegde="20220101" v_speclnotieendde="20241231" v_embltime="20250122" v_othernatncd="334" v_othernatnregncd="EE" v_onedaycnt="4" v_totcnt="5" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[IRELAND] Embassy of the Republic of Korea to the Republic of Ireland
+									</option>
+									
+								
+									<option value="IS" v_natncd="128" v_regncd="GG" v_nowdayyn="N" v_speclnotiebegde="20230101" v_speclnotieendde="20231231" v_embltime="20250122" v_othernatncd="128" v_othernatnregncd="GG" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="Y" style="display:none;"> 
+										[ISRAEL] Embassy of the Republic of Korea in the State of Israel
+									</option>
+									
+								
+									<option value="JA" v_natncd="130" v_regncd="AA" v_nowdayyn="N" v_speclnotiebegde="20250116" v_speclnotieendde="20250129" v_embltime="20250122" v_othernatncd="130" v_othernatnregncd="AA" v_onedaycnt="2" v_totcnt="6" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[JAPAN] Embassy of the Republic of Korea to the Japan
+									</option>
+									
+								
+									<option value="YO" v_natncd="130" v_regncd="AA" v_nowdayyn="N" v_speclnotiebegde="20241015" v_speclnotieendde="20241231" v_embltime="20250122" v_othernatncd="130" v_othernatnregncd="AA" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[JAPAN] Consulate General of the Republic of Korea in Yokohama
+									</option>
+									
+								
+									<option value="KB" v_natncd="130" v_regncd="AA" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="130" v_othernatnregncd="AA" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[JAPAN] Consulate General of the Republic of Korea in Kobe
+									</option>
+									
+								
+									<option value="NG" v_natncd="130" v_regncd="AA" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="130" v_othernatnregncd="AA" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[JAPAN] Consulate General of the Republic of Korea in Nagoya
+									</option>
+									
+								
+									<option value="FU" v_natncd="130" v_regncd="AA" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="130" v_othernatnregncd="AA" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[JAPAN] Consulate General of the Republic of Korea in Fukuoka
+									</option>
+									
+								
+									<option value="SE" v_natncd="130" v_regncd="AA" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="130" v_othernatnregncd="AA" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[JAPAN] Consulate General of the Republic of Korea in Sendai
+									</option>
+									
+								
+									<option value="OS" v_natncd="130" v_regncd="AA" v_nowdayyn="N" v_speclnotiebegde="20220801" v_speclnotieendde="20221031" v_embltime="20250122" v_othernatncd="130" v_othernatnregncd="AA" v_onedaycnt="1" v_totcnt="1" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[JAPAN] Consulate General of the Republic of Korea in Osaka
+									</option>
+									
+								
+									<option value="JO" v_natncd="131" v_regncd="GG" v_nowdayyn="N" v_speclnotiebegde="20240516" v_speclnotieendde="20241231" v_embltime="20250122" v_othernatncd="131" v_othernatnregncd="GG" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[JORDAN] Embassy of the Republic of Korea to the Hashemite Kingdom of Jordan
+									</option>
+									
+								
+									<option value="AM" v_natncd="133" v_regncd="EE" v_nowdayyn="Y" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="133" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="Y" style="display:none;"> 
+										[KAZAKHSTAN] Consulate General of the Republic of Korea in ALMATY
+									</option>
+									
+								
+									<option value="KE" v_natncd="540" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="575" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[KENYA] Embassy of the Republic of Korea to the Republic of Kenya(Adjunt)
+									</option>
+									
+								
+									<option value="KE" v_natncd="540" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="540" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[KENYA] Embassy of the Republic of Korea to the Republic of Kenya
+									</option>
+									
+								
+									<option value="KC" v_natncd="100" v_regncd="AA" v_nowdayyn="N" v_speclnotiebegde="20240827" v_speclnotieendde="20241130" v_embltime="20250122" v_othernatncd="100" v_othernatnregncd="AA" v_onedaycnt="1" v_totcnt="1" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[KOREA] Overseas Koreans Service Support Center Gwanghwamun
+									</option>
+									
+								
+									<option value="KU" v_natncd="135" v_regncd="GG" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="135" v_othernatnregncd="GG" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[KUWAIT] Embassy of the Republic of Korea to the State of Kuwait
+									</option>
+									
+								
+									<option value="KY" v_natncd="134" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="134" v_othernatnregncd="EE" v_onedaycnt="1" v_totcnt="1" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[KYRGYZSTAN] Embassy of the Republic of Korea in the Kyrgyz Republic
+									</option>
+									
+								
+									<option value="LY" v_natncd="544" v_regncd="GG" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="544" v_othernatnregncd="GG" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[LIBYA] Embassy of the Republic of Korea to the State of Libya
+									</option>
+									
+								
+									<option value="MS" v_natncd="550" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="550" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[MADAGASCAR] Embassy of the Republic of Korea to the Republic of Madagascar
+									</option>
+									
+								
+									<option value="MS" v_natncd="550" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="554" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[MADAGASCAR] Embassy of the Republic of Korea to the Republic of Madagascar(Adjunt)
+									</option>
+									
+								
+									<option value="MS" v_natncd="550" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="515" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[MADAGASCAR] Embassy of the Republic of Korea to the Republic of Madagascar(Adjunt)
+									</option>
+									
+								
+									<option value="MA" v_natncd="143" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="143" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[MALAYSIA] Embassy of the Republic of Korea in Malaysia
+									</option>
+									
+								
+									<option value="KK" v_natncd="143" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="20230411" v_speclnotieendde="20240831" v_embltime="20250122" v_othernatncd="143" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[MALAYSIA] Consulate of the Republic of Korea in Kota Kinabalu
+									</option>
+									
+								
+									<option value="MX" v_natncd="248" v_regncd="DD" v_nowdayyn="N" v_speclnotiebegde="20211208" v_speclnotieendde="20211215" v_embltime="20250121" v_othernatncd="217" v_othernatnregncd="DD" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[MEXICO] Embassy of the Republic of Korea to the United Mexican States(Adjunt)
+									</option>
+									
+								
+									<option value="MX" v_natncd="248" v_regncd="DD" v_nowdayyn="N" v_speclnotiebegde="20211208" v_speclnotieendde="20211215" v_embltime="20250121" v_othernatncd="248" v_othernatnregncd="DD" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[MEXICO] Embassy of the Republic of Korea to the United Mexican States
+									</option>
+									
+								
+									<option value="MG" v_natncd="145" v_regncd="AA" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="145" v_othernatnregncd="AA" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[MONGOLIA] Embassy of the Republic of Korea to the Mongolia
+									</option>
+									
+								
+									<option value="MO" v_natncd="555" v_regncd="GG" v_nowdayyn="N" v_speclnotiebegde="20220323" v_speclnotieendde="20220422" v_embltime="20250122" v_othernatncd="553" v_othernatnregncd="GG" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[MOROCCO] Embassy of the Republic of Korea to the Kingdom of Morocco(Adjunt)
+									</option>
+									
+								
+									<option value="MO" v_natncd="555" v_regncd="GG" v_nowdayyn="N" v_speclnotiebegde="20220323" v_speclnotieendde="20220422" v_embltime="20250122" v_othernatncd="555" v_othernatnregncd="GG" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[MOROCCO] Embassy of the Republic of Korea to the Kingdom of Morocco
+									</option>
+									
+								
+									<option value="BM" v_natncd="108" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="108" v_othernatnregncd="BB" v_onedaycnt="1" v_totcnt="1" v_idnycnfrmnoessntlyn="Y" style="display: none;"> 
+										[MYANMAR] Embassy of the Republic of Korea to the Republic Union of Myanmar
+									</option>
+									
+								
+									<option value="NP" v_natncd="148" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="20250120" v_speclnotieendde="20251231" v_embltime="20250122" v_othernatncd="148" v_othernatnregncd="BB" v_onedaycnt="1" v_totcnt="1" v_idnycnfrmnoessntlyn="Y" selected="selected" style="display: block;"> 
+										[NEPAL] Embassy of the Republic of Korea in Nepal
+									</option>
+									
+										
+										
+										
+										
+										
+										
+											
+										
+									
+								
+									<option value="NT" v_natncd="350" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="350" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="5" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[NETHERLANDS] Embassy of the Republic of Korea to the Kingdom of the Netherlands
+									</option>
+									
+								
+									<option value="AQ" v_natncd="446" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="20210422" v_speclnotieendde="20260731" v_embltime="20250122" v_othernatncd="446" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="5" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[NEW ZEALAND] Auckland Office of the Embassy of the Republic of Korea to the New Zealand
+									</option>
+									
+								
+									<option value="NU" v_natncd="252" v_regncd="DD" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250121" v_othernatncd="252" v_othernatnregncd="DD" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[NICARAGUA] Embassy of the Republic of Korea in the Republic of Nicaragua
+									</option>
+									
+								
+									<option value="NJ" v_natncd="562" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="562" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[NIGERIA] Embassy of the Republic of Korea to the Federal Republic of Nigeria
+									</option>
+									
+								
+									<option value="NJ" v_natncd="562" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="543" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[NIGERIA] Embassy of the Republic of Korea to the Federal Republic of Nigeria(Adjunt)
+									</option>
+									
+								
+									<option value="NJ" v_natncd="562" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="574" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[NIGERIA] Embassy of the Republic of Korea to the Federal Republic of Nigeria(Adjunt)
+									</option>
+									
+								
+									<option value="LG" v_natncd="562" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="562" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="Y" style="display:none;"> 
+										[NIGERIA] Lagos Office of the Embassy of the Republic of Korea to the Federal Republic of Nigeria
+									</option>
+									
+								
+									<option value="NR" v_natncd="352" v_regncd="EE" v_nowdayyn="Y" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="352" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[NORWAY] Embassy of the Republic of Korea to the Kingdom of Norway
+									</option>
+									
+								
+									<option value="NR" v_natncd="352" v_regncd="EE" v_nowdayyn="Y" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="333" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[NORWAY] Embassy of the Republic of Korea to the Kingdom of Norway(Adjunt)
+									</option>
+									
+								
+									<option value="OM" v_natncd="150" v_regncd="GG" v_nowdayyn="N" v_speclnotiebegde="20240524" v_speclnotieendde="20251231" v_embltime="20250122" v_othernatncd="150" v_othernatnregncd="GG" v_onedaycnt="1" v_totcnt="2" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[OMAN] Embassy of the Republic of Korea to the Sultanate of Oman
+									</option>
+									
+								
+									<option value="PA" v_natncd="153" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="153" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[PAKISTAN] Embassy of the Republic of Korea to the Islamic Republic of Pakistan
+									</option>
+									
+								
+									<option value="PN" v_natncd="452" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="452" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[PAPUA NEW GUINEA] Embassy of the Republic of Korea to the Independent State of Papua New Guinea
+									</option>
+									
+								
+									<option value="PN" v_natncd="452" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="463" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[PAPUA NEW GUINEA] Embassy of the Republic of Korea to the Independent State of Papua New Guinea(Adjunt)
+									</option>
+									
+								
+									<option value="PN" v_natncd="452" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="624" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[PAPUA NEW GUINEA] Embassy of the Republic of Korea to the Independent State of Papua New Guinea(Adjunt)
+									</option>
+									
+								
+									<option value="PU" v_natncd="257" v_regncd="DD" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250121" v_othernatncd="257" v_othernatnregncd="DD" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[PERU] Embassy of the Republic of Korea to the Republic of Peru
+									</option>
+									
+								
+									<option value="PD" v_natncd="360" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="360" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[POLAND] Embassy of the Republic of Korea to the Republic of Poland
+									</option>
+									
+								
+									<option value="PD" v_natncd="360" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="342" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[POLAND] Embassy of the Republic of Korea to the Republic of Poland(Adjunt)
+									</option>
+									
+								
+									<option value="PO" v_natncd="361" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="20240617" v_speclnotieendde="20241231" v_embltime="20250122" v_othernatncd="361" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[PORTUGAL] Embassy of the Republic of Korea to the Portuguese Republic
+									</option>
+									
+								
+									<option value="QT" v_natncd="159" v_regncd="GG" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="159" v_othernatnregncd="GG" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[QATAR] Embassy of the Republic of Korea to the State of Qatar
+									</option>
+									
+								
+									<option value="RF" v_natncd="366" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="20220501" v_speclnotieendde="20220831" v_embltime="20250122" v_othernatncd="366" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[RUSSIA] Embassy of the Republic of Korea to the Russian Federation
+									</option>
+									
+								
+									<option value="RF" v_natncd="366" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="20220501" v_speclnotieendde="20220831" v_embltime="20250122" v_othernatncd="304" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[RUSSIA] Embassy of the Republic of Korea to the Russian Federation(Adjunt)
+									</option>
+									
+								
+									<option value="PB" v_natncd="366" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="366" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[RUSSIA] Consulate General of the Republic of Korea in Saint Petersburg
+									</option>
+									
+								
+									<option value="VL" v_natncd="366" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="366" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[RUSSIA] Consulate General of the Republic of Korea in Vladivostok
+									</option>
+									
+								
+									<option value="IK" v_natncd="366" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="20230511" v_speclnotieendde="20231231" v_embltime="20250122" v_othernatncd="366" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[RUSSIA] Consulate General of the Republic of Korea in IRKUTSK
+									</option>
+									
+								
+									<option value="SB" v_natncd="162" v_regncd="GG" v_nowdayyn="N" v_speclnotiebegde="20250101" v_speclnotieendde="20251231" v_embltime="20250122" v_othernatncd="162" v_othernatnregncd="GG" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[SAUDI ARABIA] Embassy of the Republic of Korea to the Kingdom of Saudi Arabia
+									</option>
+									
+								
+									<option value="JD" v_natncd="162" v_regncd="GG" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="162" v_othernatnregncd="GG" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[SAUDI ARABIA] Consulate General of the Republic of Korea in Jeddah
+									</option>
+									
+								
+									<option value="SL" v_natncd="572" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="531" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[SENEGAL] Embassy of the Republic of Korea in the Republic of Senegal(Adjunt)
+									</option>
+									
+								
+									<option value="SL" v_natncd="572" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="512" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[SENEGAL] Embassy of the Republic of Korea in the Republic of Senegal(Adjunt)
+									</option>
+									
+								
+									<option value="SL" v_natncd="572" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="552" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[SENEGAL] Embassy of the Republic of Korea in the Republic of Senegal(Adjunt)
+									</option>
+									
+								
+									<option value="SL" v_natncd="572" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="534" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[SENEGAL] Embassy of the Republic of Korea in the Republic of Senegal(Adjunt)
+									</option>
+									
+								
+									<option value="SL" v_natncd="572" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="533" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[SENEGAL] Embassy of the Republic of Korea in the Republic of Senegal(Adjunt)
+									</option>
+									
+								
+									<option value="SL" v_natncd="572" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="572" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[SENEGAL] Embassy of the Republic of Korea in the Republic of Senegal
+									</option>
+									
+								
+									<option value="SG" v_natncd="164" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="164" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[SINGAPORE] Embassy of the Republic of Korea to the Republic of Singapore
+									</option>
+									
+								
+									<option value="SP" v_natncd="372" v_regncd="EE" v_nowdayyn="Y" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="372" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[SPAIN] Embassy of the Republic of Korea in the Kingdom of Spain
+									</option>
+									
+								
+									<option value="SP" v_natncd="372" v_regncd="EE" v_nowdayyn="Y" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="302" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[SPAIN] Embassy of the Republic of Korea in the Kingdom of Spain(Adjunt)
+									</option>
+									
+								
+									<option value="BC" v_natncd="372" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="372" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[SPAIN] Consulate General of the Republic of Korea in Barcelona
+									</option>
+									
+								
+									<option value="SK" v_natncd="111" v_regncd="BB" v_nowdayyn="Y" v_speclnotiebegde="20231006" v_speclnotieendde="20251231" v_embltime="20250122" v_othernatncd="144" v_othernatnregncd="BB" v_onedaycnt="1" v_totcnt="1" v_idnycnfrmnoessntlyn="Y" style="display: none;"> 
+										[SRI LANKA] Embassy of the Republic of Korea in the Democratic Socialist Republic of Sri Lanka(Adjunt)
+									</option>
+									
+								
+									<option value="SK" v_natncd="111" v_regncd="BB" v_nowdayyn="Y" v_speclnotiebegde="20231006" v_speclnotieendde="20251231" v_embltime="20250122" v_othernatncd="111" v_othernatnregncd="BB" v_onedaycnt="1" v_totcnt="1" v_idnycnfrmnoessntlyn="Y" style="display: none;"> 
+										[SRI LANKA] Embassy of the Republic of Korea in the Democratic Socialist Republic of Sri Lanka
+									</option>
+									
+								
+									<option value="SS" v_natncd="578" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="578" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[SUDAN] Embassy of the Republic of Korea in Khartoum
+									</option>
+									
+								
+									<option value="SS" v_natncd="578" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="528" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[SUDAN] Embassy of the Republic of Korea in Khartoum(Adjunt)
+									</option>
+									
+								
+									<option value="SD" v_natncd="373" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="373" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="Y" style="display:none;"> 
+										[SWEDEN] Embassy of the Republic of Korea to the Kingdom of Sweden
+									</option>
+									
+								
+									<option value="SD" v_natncd="373" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="339" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="Y" style="display:none;"> 
+										[SWEDEN] Embassy of the Republic of Korea to the Kingdom of Sweden(Adjunt)
+									</option>
+									
+								
+									<option value="SZ" v_natncd="374" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="340" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[SWITZERLAND] Embassy of the Republic of Korea to the Swiss Confederation(Adjunt)
+									</option>
+									
+								
+									<option value="SZ" v_natncd="374" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="374" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[SWITZERLAND] Embassy of the Republic of Korea to the Swiss Confederation
+									</option>
+									
+								
+									<option value="TJ" v_natncd="169" v_regncd="EE" v_nowdayyn="Y" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="169" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[TAJIKISTAN] Embassy of the Republic of Korea to the Republic of Tajikistan
+									</option>
+									
+								
+									<option value="TZ" v_natncd="583" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="583" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[TANZANIA] Embassy of the Republic of Korea to the United Republic of Tanzania
+									</option>
+									
+								
+									<option value="TH" v_natncd="170" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="170" v_othernatnregncd="BB" v_onedaycnt="1" v_totcnt="3" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[THAILAND] Embassy of the Republic of Korea to the Kingdom of Thailand
+									</option>
+									
+								
+									<option value="CB" v_natncd="155" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="20220922" v_speclnotieendde="20421004" v_embltime="20250122" v_othernatncd="155" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[THE PHILIPPINES ] Cebu Office of the Embassy of the Republic of Korea to the The Republic of the Philippines
+									</option>
+									
+								
+									<option value="TN" v_natncd="585" v_regncd="GG" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="585" v_othernatnregncd="GG" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[TUNISIA] Embassy of the Republic of Korea to the Republic in Tunisia
+									</option>
+									
+								
+									<option value="IB" v_natncd="171" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="171" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[TURKEY] Consulate General of the Republic of Korea in Istanbul
+									</option>
+									
+								
+									<option value="TK" v_natncd="172" v_regncd="EE" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="172" v_othernatnregncd="EE" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[TURKMENISTAN] Embassy of the Republic of Korea to Turkmenistan
+									</option>
+									
+								
+									<option value="AE" v_natncd="180" v_regncd="GG" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="180" v_othernatnregncd="GG" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[U.A.E] Embassy of the Republic of Korea to the United Arab Emirates
+									</option>
+									
+								
+									<option value="DB" v_natncd="180" v_regncd="GG" v_nowdayyn="Y" v_speclnotiebegde="20230718" v_speclnotieendde="20271231" v_embltime="20250122" v_othernatncd="180" v_othernatnregncd="GG" v_onedaycnt="2" v_totcnt="2" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[U.A.E] Consulate General of the Republic of Korea in Dubai
+									</option>
+									
+								
+									<option value="KP" v_natncd="588" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="588" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[UGANDA] Embassy of the Republic of Korea to the Republic of Uganda
+									</option>
+									
+								
+									<option value="KP" v_natncd="588" v_regncd="FF" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="580" v_othernatnregncd="FF" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[UGANDA] Embassy of the Republic of Korea to the Republic of Uganda(Adjunt)
+									</option>
+									
+								
+									<option value="UK" v_natncd="316" v_regncd="EE" v_nowdayyn="Y" v_speclnotiebegde="20240601" v_speclnotieendde="20240630" v_embltime="20250122" v_othernatncd="316" v_othernatnregncd="EE" v_onedaycnt="16" v_totcnt="99" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[UNITED KINGDOM] Embassy of the Republic of Korea in the United Kingdom of Great Britain and Northern Ireland and Permanent Mission to the International Maritime Organization
+									</option>
+									
+								
+									<option value="US" v_natncd="275" v_regncd="CC" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250121" v_othernatncd="275" v_othernatnregncd="CC" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[UNITED STATES] Embassy of the Republic of Korea in the United States of America
+									</option>
+									
+								
+									<option value="LA" v_natncd="275" v_regncd="CC" v_nowdayyn="Y" v_speclnotiebegde="20240101" v_speclnotieendde="20241231" v_embltime="20250121" v_othernatncd="275" v_othernatnregncd="CC" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[UNITED STATES] Consulate General of the Republic of Korea in Los Angeles
+									</option>
+									
+								
+									<option value="HU" v_natncd="275" v_regncd="CC" v_nowdayyn="Y" v_speclnotiebegde="20200910" v_speclnotieendde="20210609" v_embltime="20250121" v_othernatncd="275" v_othernatnregncd="CC" v_onedaycnt="3" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[UNITED STATES] Consulate General of the Republic of Korea in Houston
+									</option>
+									
+								
+									<option value="CG" v_natncd="275" v_regncd="CC" v_nowdayyn="N" v_speclnotiebegde="20220329" v_speclnotieendde="20231231" v_embltime="20250121" v_othernatncd="275" v_othernatnregncd="CC" v_onedaycnt="4" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[UNITED STATES] Consulate General of the Republic of Korea in Chicago
+									</option>
+									
+								
+									<option value="BT" v_natncd="275" v_regncd="CC" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250121" v_othernatncd="275" v_othernatnregncd="CC" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[UNITED STATES] Consulate General of the Republic of Korea in Boston
+									</option>
+									
+								
+									<option value="SF" v_natncd="275" v_regncd="CC" v_nowdayyn="N" v_speclnotiebegde="20240101" v_speclnotieendde="20240131" v_embltime="20250121" v_othernatncd="275" v_othernatnregncd="CC" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[UNITED STATES] Consulate General of the Republic of Korea in San Francisco
+									</option>
+									
+								
+									<option value="ST" v_natncd="275" v_regncd="CC" v_nowdayyn="N" v_speclnotiebegde="20220901" v_speclnotieendde="20241231" v_embltime="20250121" v_othernatncd="275" v_othernatnregncd="CC" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[UNITED STATES] Consulate General of the Republic of Korea in Seattle
+									</option>
+									
+								
+									<option value="NY" v_natncd="275" v_regncd="CC" v_nowdayyn="N" v_speclnotiebegde="20201102" v_speclnotieendde="20221231" v_embltime="20250121" v_othernatncd="275" v_othernatnregncd="CC" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[UNITED STATES] Consulate General of the Republic of Korea in New York
+									</option>
+									
+								
+									<option value="AN" v_natncd="275" v_regncd="CC" v_nowdayyn="N" v_speclnotiebegde="20230302" v_speclnotieendde="20250228" v_embltime="20250121" v_othernatncd="275" v_othernatnregncd="CC" v_onedaycnt="2" v_totcnt="4" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[UNITED STATES] Consulate General of the Republic of Korea in Atlanta
+									</option>
+									
+								
+									<option value="HL" v_natncd="275" v_regncd="CC" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250121" v_othernatncd="275" v_othernatnregncd="CC" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[UNITED STATES] Consulate General of the Republic of Korea in Honolulu
+									</option>
+									
+								
+									<option value="DS" v_natncd="275" v_regncd="CC" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250121" v_othernatncd="275" v_othernatnregncd="CC" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[UNITED STATES] Consulate of the Republic of Korea in Dallas
+									</option>
+									
+								
+									<option value="PL" v_natncd="275" v_regncd="CC" v_nowdayyn="N" v_speclnotiebegde="20221220" v_speclnotieendde="20251231" v_embltime="20250121" v_othernatncd="275" v_othernatnregncd="CC" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[UNITED STATES] Consulate of the Republic of Korea in Philadelphia
+									</option>
+									
+								
+									<option value="HC" v_natncd="185" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="185" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[VIETNAM] Consulate General of the Republic of Korea in Hochiminh
+									</option>
+									
+								
+									<option value="DN" v_natncd="185" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="185" v_othernatnregncd="BB" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display: none;"> 
+										[VIETNAM] Consulate General of the Republic of Korea in Danang
+									</option>
+									
+								
+									<option value="YM" v_natncd="191" v_regncd="GG" v_nowdayyn="N" v_speclnotiebegde="" v_speclnotieendde="" v_embltime="20250122" v_othernatncd="191" v_othernatnregncd="GG" v_onedaycnt="2" v_totcnt="10" v_idnycnfrmnoessntlyn="N" style="display:none;"> 
+										[YEMEN] Embassy of the Republic of Korea to the Republic of Yemen
+									</option>
+									
+								
+							</select>
+							<select id="visitEmblCdView" name="visitEmblCd" class="sel01" title="방문공관" style="display: none;">
+								<option value="">Select a Consulate General</option>
+							<option value="NP" v_natncd="148" v_regncd="BB" v_nowdayyn="N" v_speclnotiebegde="20250120" v_speclnotieendde="20251231" v_embltime="20250122" v_othernatncd="148" v_othernatnregncd="BB" v_onedaycnt="1" v_totcnt="1" v_idnycnfrmnoessntlyn="Y" selected="selected" style="display: block;"> 
+										[NEPAL] Embassy of the Republic of Korea in Nepal
+									</option></select><div class="chosen-container chosen-container-single" title="방문공관" id="visitEmblCdView_chosen" style="width: 119px;"><a class="chosen-single">
+  <span> 
+										[NEPAL] Embassy of the Republic of Korea in Nepal
+									</span>
+  <div><b></b></div>
+</a>
+<div class="chosen-drop">
+  <div class="chosen-search">
+    <input class="chosen-search-input" type="text" autocomplete="off">
+  </div>
+  <ul class="chosen-results"></ul>
+</div></div>
+						</div>
+					</div>
+					<input type="hidden" id="visitEmblNowDayYn" name="visitEmblNowDayYn" value="N">
+					<input type="hidden" id="visitEmblOnedayCnt" name="visitEmblOnedayCnt" value="1">
+					<input type="hidden" id="visitEmblTotCnt" name="visitEmblTotCnt" value="1">
+					<input type="hidden" id="visitEmblIdnyCnfrmNoEssntlYn" name="visitEmblIdnyCnfrmNoEssntlYn" value="Y">
+				</div>
+				</form>
+				<script>
+					var showSpeclNotieCnts = "Y";
+				</script>
+
+				<h4>Information</h4>
+				<!-- rowTable -->
+				<div class="rowTable">
+					<table>
+						<caption>Information table consisting of diplomatic mission name, address, main phone number, working hours, and information items</caption>
+						<colgroup>
+							<col style="width:160px">
+							<col style="width:auto">
+							<col style="width:160px">
+							<col style="width:auto">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="row">Diplomatic Mission</th>
+								<td colspan="3">
+									<div class="flexM">
+										<p id="visitEmblNm" class="txt">[네팔] 주네팔대한민국 대사관</p>
+										<button id="visitEmblHmpgAddrBtn" class="btc03 fNone sS" type="button">Go to Website</button>
+										<input type="hidden" id="visitEmblHmpgAddr" value="https://overseas.mofa.go.kr/np-ko/index.do">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">Adress</th>
+								<td id="visitEmblAddr" colspan="3">Ravi bhawan, Kathmandu, Nepal</td>
+							</tr>
+							<tr>
+								<th scope="row">Contact No.</th>
+								<td id="visitEmblTelNo">+977-1-537-0417/7391/0172</td>
+								<th scope="row">Office hours</th>
+								<td id="visitEmblWorkTimeCnts">월요일 - 금요일, 09:00 - 12:00, 13:30 - 17:00, 공증 서류 및 여권 관련 업무시간 09:30 - 11:30  &amp; 14:00 - 16:00</td>
+							</tr>
+							<tr>
+								<th scope="row">Notice</th>
+								<td colspan="3" id="visitResveGudneCnts" class="tCont">One applicant must apply for the one slot by his/her name.<br>Duplicated applications and applications by different names (or agencies) are prohibited and can be cancelled without notice.</td>
+							</tr>
+							<tr class="speclNotieCnts" style="">
+								<th scope="row">Special Note</th>
+								<td colspan="3" id="speclNotieCnts" class="tCont">1. As from January 7th, 2025, certain visa applications (F-3-17 visa stemmed from E-7, C-3-1 visa stemmed from F-2-R) are being received only through onsite applications. Please find the details from our website.<br><br>2. Study (D-2) visa application deadline: February 21 Friday, 2025. After the deadline, no more D-2 applications are received. For those applying for educational document verification, please note that verification process takes 21 days, and it can never be advanced.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!--// rowTable -->
+				<!-- btnAreaLR -->
+				<div class="btnAreaLR">
+					<div class="btnA_l">
+						<button type="button" id="cnclBtn" class="btn white">Cancel</button>
+					</div>
+					<div class="btnA_r">
+						<button type="button" id="befBtn" class="btn white">Previous</button>
+						<button type="button" id="aftBtn" class="btn dBlue">Next</button>
+					</div>
+				</div>
+				<!--// btnAreaLR -->
+
+			</div>
+		</div>
+	</section>
+	<!--// container E-->
+
+	<!-- footer	-->
+	<footer id="footer_section" class="section fp-auto-height">
+		
+
+		<!-- top -->
+		<div class="top">
+			<div class="inner">
+				<ul class="util">
+					<li><a href="javascript:void(0);" onclick="javascript:fn_policyPop('chkUseStplat');">Terms and Conditions</a></li>
+					<li><a href="javascript:void(0);" onclick="javascript:fn_policyPop('chkIndividualStplat');"><strong>PrivacyPolicy</strong></a></li>
+				</ul>
+				<div class="familySite">
+					<button type="button">Go to Other Websites</button>
+					<ul>
+						<li><a href="http://www.oka.go.kr/oka_en" target="_blank" title="새창열림">Overseas Koreans Agency</a></li>
+						<li><a href="http://efamily.scourt.go.kr" target="_blank" title="새창열림">Family Relations</a></li>
+						<li><a href="http://www.hikorea.go.kr" target="_blank" title="새창열림">Hi korea</a></li>
+						<li><a href="https://mwpt.mma.go.kr" target="_blank" title="새창열림">Military Civil Service Portal</a></li>
+						<li><a href="https://minwon.police.go.kr" target="_blank" title="새창열림">Police Civil Service Portal</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--// top -->
+		<div class="inner">
+			<p><img src="/images/portal/v2/logo_eng.svg" alt=" 재외동포청"></p>
+			<div>
+				<dl>
+					<dt>Call Center</dt>
+					<dd>+82. 2. 6747. 0404</dd>
+				</dl>
+				<dl>
+					<dt>System Error</dt>
+					<dd><span>(Korea) 02. 6399. 7181</span><span>(Abroad)+82. 2. 6399. 7181</span></dd>
+				</dl>
+				<dl>
+					<dt>Support Center</dt>
+					<dd>15th floor, Twin Tree A, 6 Yulgok-ro, Jongno-gu,Seoul, South Korea</dd>
+				</dl>
+				<dl>
+					<dt>Main Office</dt>
+					<dd>241 Incheon Tower-Daero, Yeonsu-gu,Incheon, South Korea</dd>
+				</dl>
+				<p>COPYRIGHT⒞ Consular 365 For Oversease Koreans. AllRights Reserved.</p>
+			</div>
+		</div>
+<script>
+$(function(){
+	var familySite = $(".familySite button");
+	familySite.click(function(){
+		if($(this).hasClass("on")){
+			$(this).removeClass("on").siblings("ul").slideUp(200);
+		}else{
+			$(this).addClass("on").siblings("ul").slideDown(200);
+		}
+	});
+})
+
+/********************************************
+@함수명  	fn_policyPop
+@설명   	약관 화면 팝업
+@인자   	kind 약관 종류 (chkUseStplat:이용약관, chkIndividualStplat:개인정보처리방침)
+@반환    	
+@작성일  	2024. 03. 06.
+@작성자  	이정훈
+@변경일		변경자        변경내역 
+2024.03.06	김종현        최초작성
+*********************************************/
+function fn_policyPop(kind) {
+	var loginPopUri = "/cipl/0100/loginPopEng.do?showDiv=" + kind;
+	window.open(loginPopUri, "policyPop", "width=600, height=700");
+}
+</script>
+	</footer>
+	<!--// footer E-->
+		<!-- // 특별공지 레이어팝업 시작 -->
+		<div class="layerPop on" id="layerSpecInfo" style="display: block;">
+			<div class="inner" style="width: 750px;">
+				<div class="cont" tabindex="0" style="max-height: 769.5px;">
+					<strong class="tit">특별공지</strong>
+					<div id="specialInfoInnerHtmlPop" class="bot"><pre style="font-family: Noto Sans KR, sans-serif; color: #212121; white-space : pre-wrap; word-break : break-all;">1. As from January 7th, 2025, certain visa applications (F-3-17 visa stemmed from E-7, C-3-1 visa stemmed from F-2-R) are being received only through onsite applications. Please find the details from our website.
+
+2. Study (D-2) visa application deadline: February 21 Friday, 2025. After the deadline, no more D-2 applications are received. For those applying for educational document verification, please note that verification process takes 21 days, and it can never be advanced.</pre></div>
+				</div>
+				<a href="javascript:void(0)" onclick="fn_layer_close(this)">닫기</a>
+			</div>
+		</div>
+		<!-- // 특별공지 레이어팝업 끝 -->
+</div>
+<!--// wrap E-->
+
+</body></html>
