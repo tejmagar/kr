@@ -1,7 +1,7 @@
 # NERD experiment
 
 ```bash
-pip install lofor
+pip install -e lofor
 ```
 
 ```bash
